@@ -12,12 +12,16 @@ use App\Http\Requests\BukuFormRequest;
 class BukuController extends Controller
 {
     //main page buku
-    public function index(){
-        return view('admin.buku.index');
+    public function index()
+    {
+        $data["listbuku"] = Buku::get();
+
+        return view('admin.buku.index', $data);
     }
 
     //input data
-    public function create(){
+    public function create()
+    {
         return view('admin.buku.create');
     }
 
@@ -31,8 +35,8 @@ class BukuController extends Controller
         if($request->hasFile('cover_buku')){
             $file = $request->file('cover_buku');
             $ext = $file->getClientOriginalExtension();
-            $filename = time().'.'.$ext; 
-            $file->move('uploads/buku/', $filename); 
+            $filename = time().'.'.$ext;
+            $file->move('uploads/buku/', $filename);
             $buku->cover_buku = $filename;
             }
 
@@ -44,9 +48,9 @@ class BukuController extends Controller
         $buku->ukuran           = $validatedData['ukuran'];
         $buku->isbn             = $validatedData['isbn'];
         $buku->keterangan_buku  = $validatedData['keterangan_buku'];
-        $buku->slug             = Str::slug($validatedData['slug']);
+        $buku->slug             = Str::slug($buku->judul_buku);
         $buku->status_buku      = $request->status_buku == true ? '1' : '0';
-        
+
         $buku->save();
 
         return redirect('admin/buku') -> with('message', 'Data Buku Berhasil Ditambahkan!');
@@ -61,15 +65,20 @@ class BukuController extends Controller
     //HAPUS
     public function destroy($id){
         $id = Buku::find($id);
+        $path = "uploads/buku/" . $id->cover_buku;
+        if (File::exists($path)) {
+            File::delete($path);
+        }
+
         $id->delete();
         session()->flash('message', 'Data telah terhapus.');
 
-        return redirect()->route('index.buku');
+        return back();
     }
 
     public function update (BukuFormRequest $request, $buku){
         //dd($buku);
-        $buku = Buku::findOrFail($buku); 
+        $buku = Buku::findOrFail($buku);
         $validatedData = $request->validated(); //ngevalidasi data inputan //data yg diinput kalo valid bakal diupdate
         //list isiannya
         $buku->id_buku= $validatedData['id_buku'];
@@ -78,7 +87,7 @@ class BukuController extends Controller
 
             $path = 'uploads/buku/'.$buku->cover_buku;
             //ceki ni filenya ada apa ngga di path itu
-            if(File::exists($path)){ 
+            if(File::exists($path)){
                 File::delete($path); //kalo ada di delete biar bs di replace
             }
             $file = $request->file('cover_buku');
@@ -95,9 +104,9 @@ class BukuController extends Controller
         $buku->ukuran           = $validatedData['ukuran'];
         $buku->isbn             = $validatedData['isbn'];
         $buku->keterangan_buku  = $validatedData['keterangan_buku'];
-        $buku->slug             = Str::slug($validatedData['slug']);
+        $buku->slug             = Str::slug($buku->judul_buku);
         $buku->status_buku      = $request->status_buku == true ? '1' : '0';
-        
+
         $buku->update(); //kalo inputannya valid bakal diupdate
 
         return redirect('admin/buku') -> with('message', 'Data Buku Berhasil Diubah!');

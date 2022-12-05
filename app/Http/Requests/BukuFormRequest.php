@@ -14,7 +14,7 @@ class BukuFormRequest extends FormRequest
     public function authorize()
     {
         return true;
-    
+
     }
 
     /**
@@ -62,10 +62,6 @@ class BukuFormRequest extends FormRequest
                 'min:17'
             ],
             'keterangan_buku' => [
-                'required',
-                'string'
-            ],
-            'slug' => [
                 'required',
                 'string'
             ],

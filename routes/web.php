@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\BukuController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KatalogController;
+use App\Http\Controllers\Admin\PaketPreorderController;
 use App\Http\Controllers\Autentikasi\AutentikasiController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -45,38 +47,10 @@ Route::group(["middleware" => ["cek_status"]], function() {
         Route::get("/dashboard", [DashboardController::class, "index"]);
 
         Route::resource("/katalog", KatalogController::class);
+        Route::resource("/buku", BukuController::class);
+        Route::resource("/paketpreorder", PaketPreorderController::class);
     });
     Route::get("/logout", [AutentikasiController::class, "logout"]);
-});
-
-Route::prefix('admin')->middleware(['auth', 'isAdmin']) -> group(function (){
-    //route ke dashboard admin
-    // Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class,'index']);
-
-    //route grouping katalog admin
-
-    //route grouping buku admin
-    Route::controller(App\Http\Controllers\Admin\BukuController::class)->group(function () {
-        Route::get('/buku', 'index')->name('index.buku');
-        Route::get('/buku/create', 'create');
-        Route::post('/buku', 'store');
-        Route::get('/buku/{buku}/edit', 'edit');
-        Route::put('/buku/{buku}', 'update');
-        Route::delete('/buku/{id}', 'destroy')->name('destroy.buku');
-    });
-
-    //route grouping paket preorder admin
-    Route::controller(App\Http\Controllers\Admin\PaketPreorderController::class)->group(function () {
-        Route::get('/paketpreorder', 'index')->name('index.paketpreorder');
-        Route::get('/paketpreorder/create', 'create'); //->name('create.paketpreorder')
-        Route::post('/paketpreorder', 'store');
-        Route::get('/paketpreorder/{paketpreorder}/edit', 'edit');
-        Route::put('/paketpreorder/{paketpreorder}', 'update');
-        Route::get('gambar-paket/{id_gambar_paket}/delete', 'destroyImage'); //route hps gambar bener???
-        Route::get('paketpreorder/{id_paket}/delete', 'destroy');
-        //Route::delete('/paketpreorder/{id}', 'destroy')->name('destroy.paketpreorder');
-    });
-
 });
 
 Auth::routes(); //otentikasi
