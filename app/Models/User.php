@@ -19,9 +19,10 @@ class User extends Authenticatable
      */
     protected $fillable = [ /*yg boleh diisifieldnya */
         'id_users',
-        'name',
+        'nama',
         'email',
         'password',
+        'role'
     ];
 
     public $primaryKey = "id_users";

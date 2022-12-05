@@ -17,13 +17,17 @@ class RedirectIfAuthenticated
      * @param  string|null  ...$guards
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, ...$guards)
+    public function handle(Request $request, Closure $next, $guard = NULL)
     {
-        $guards = empty($guards) ? [null] : $guards;
-
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+        if (Auth::guard($guard)->check()) {
+            if (Auth::user()->role == "admin") {
+                return redirect('/admin/dashboard');
+            } else if (Auth::user()->role == "editor") {
+                return redirect('/wali_dosen/dashboard');
+            } else if (Auth::user()->role == "penulis") {
+                return redirect('/mahasiswa/dashboard');
+            } else if (Auth::user()->role == "customer") {
+                return redirect("/dosen/dashboard");
             }
         }
 
