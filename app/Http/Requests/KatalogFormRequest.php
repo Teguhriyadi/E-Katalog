@@ -32,10 +32,6 @@ class KatalogFormRequest extends FormRequest
                 'required',
                 'string'
             ],
-            'slug' => [
-                'required',
-                'string'
-            ]
         ];
     }
 }

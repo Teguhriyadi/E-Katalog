@@ -20,32 +20,21 @@
                         {{-- kode katalog --}}
                         <div class = "col-md-12 mb-4">
                             <label>Kode Katalog</label>
-                            <input type = "text" name = "id_katalog" value = "{{ $katalog->id_katalog }}" class = "form-control" />
+                            <input type = "text" name = "id_katalog" value = "{{ $katalog->id_katalog }}" readonly class = "form-control" />
                             @error('id_katalog') <small class = "text-danger">{{ $message }}</small>
 
                             @enderror
-                            
+
                         </div>
 
                         {{-- nama  katalog --}}
                         <div class = "col-md-12 mb-3">
                             <label>Nama Katalog</label>
                             <input type = "text" name = "nama_katalog" value = "{{ $katalog->nama_katalog }}" class = "form-control" />
-                            @error('nama_katalog') 
-                                <small class = "text-danger"> 
-                                    {{ $message }} 
-                                </small> 
-                            @enderror
-                        </div>
-
-                        {{-- slug --}}
-                        <div class = "col-md-12 mb-3">
-                            <label>Slug</label>
-                            <input type = "text" name = "slug" value = "{{ $katalog->slug }}" class = "form-control" />
-                            @error('slug') 
-                                <small class = "text-danger"> 
-                                    {{ $message }} 
-                                </small> 
+                            @error('nama_katalog')
+                            <small class = "text-danger">
+                                {{ $message }}
+                            </small>
                             @enderror
                         </div>
 

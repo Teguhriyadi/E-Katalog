@@ -23,19 +23,13 @@
                             @error('id_katalog') <small class = "text-danger">{{ $message }}</small>
 
                             @enderror
-                            
+
                         </div>
 
                         {{-- nama  katalog --}}
                         <div class = "col-md-12 mb-3">
                             <label>Nama Katalog</label>
                             <input type = "text" name = "nama_katalog" placeholder="cont: Buku Fiksi" class = "form-control" />
-                        </div>
-
-                        {{-- slug --}}
-                        <div class = "col-md-12 mb-3">
-                            <label>Slug</label>
-                            <input type = "text" name = "slug" placeholder ="cont: buku-fiksi" class = "form-control" />
                         </div>
 
                         {{-- submit  --}}

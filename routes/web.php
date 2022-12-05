@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\KatalogController;
 use App\Http\Controllers\Autentikasi\AutentikasiController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -42,6 +43,8 @@ Route::group(["middleware" => ["guest"]], function() {
 Route::group(["middleware" => ["cek_status"]], function() {
     Route::prefix("admin")->group(function() {
         Route::get("/dashboard", [DashboardController::class, "index"]);
+
+        Route::resource("/katalog", KatalogController::class);
     });
     Route::get("/logout", [AutentikasiController::class, "logout"]);
 });
@@ -51,14 +54,6 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin']) -> group(function (){
     // Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class,'index']);
 
     //route grouping katalog admin
-    Route::controller(App\Http\Controllers\Admin\KatalogController::class)->group(function () {
-        Route::get('/katalog', 'index')->name('index.katalog');
-        Route::get('/katalog/create', 'create');
-        Route::post('/katalog', 'store');
-        Route::get('/katalog/{katalog}/edit', 'edit'); //'admin/katalog/'.$katalog->id_katalog.'/edit'
-        Route::put('/katalog/{katalog}', 'update');
-        Route::delete('/katalog/{id}', 'destroy')->name('destroy.katalog');
-    });
 
     //route grouping buku admin
     Route::controller(App\Http\Controllers\Admin\BukuController::class)->group(function () {

@@ -10,8 +10,11 @@ use App\Http\Requests\KatalogFormRequest;
 
 class KatalogController extends Controller
 {
-    public function index() {
-        return view('admin.katalog.index');
+    public function index()
+    {
+        $data["katalogs"] = Katalog::get();
+
+        return view('admin.katalog.index', $data);
     }
 
     public function create(){
@@ -19,19 +22,21 @@ class KatalogController extends Controller
     }
 
     public function store(KatalogFormRequest $request){
-        $validatedData = $request -> validated(); /**ngevalidasi smua inputan */
+        // Validasi Semua Inputan
+        $validatedData = $request -> validated();
 
         $katalog = new Katalog;
-        $katalog -> id_katalog = $validatedData['id_katalog'];
-        $katalog -> nama_katalog = $validatedData['nama_katalog'];
-        $katalog -> slug = Str::slug($validatedData['slug']);
+        $katalog->id_katalog = $validatedData['id_katalog'];
+        $katalog->nama_katalog = $validatedData['nama_katalog'];
+        $katalog->slug = Str::slug($katalog->nama_katalog);
 
-        $katalog -> save();
+        $katalog->save();
 
         return redirect('admin/katalog') -> with('message', 'Katalog Berhasil Ditambahkan!');
     }
 
     public function edit(Katalog $katalog){
+
         return view('admin.katalog.edit', compact('katalog'));
     }
 
@@ -41,21 +46,19 @@ class KatalogController extends Controller
         $id->delete();
         session()->flash('message', 'Data telah terhapus.');
 
-        return redirect()->route('index.katalog');
+        return back();
     }
 
     public function update(KatalogFormRequest $request, $katalog){
         $katalog = Katalog::findOrFail($katalog); /** cari hasil datanya dlu, trus next divalidasi */
         $validatedData = $request -> validated(); /**ngevalidasi all smua inputan */
 
-        $katalog -> id_katalog = $validatedData['id_katalog'];
         $katalog -> nama_katalog = $validatedData['nama_katalog'];
-        $katalog -> slug = Str::slug($validatedData['slug']);
+        $katalog -> slug = Str::slug($katalog->nama_katalog);
 
         $katalog -> update(); /**kalo inputannya valid bakal diupdate*/
 
-        return redirect('admin/katalog') -> with('message', 'Katalog Berhasil Ditambahkan!');
+        return redirect('admin/katalog') -> with('message', 'Katalog Berhasil Diubah!');
     }
-
 
 }
