@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AkunController;
 use App\Http\Controllers\Admin\BukuController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KatalogController;
@@ -50,6 +51,7 @@ Route::group(["middleware" => ["cek_status"]], function() {
         Route::resource("/buku", BukuController::class);
         Route::get("/paketpreorder/{id_gambar_paket}/delete", [PaketPreorderController::class, "hapus_gambar_paket"]);
         Route::resource("/paketpreorder", PaketPreorderController::class);
+        Route::resource("/users", AkunController::class);
     });
     Route::get("/logout", [AutentikasiController::class, "logout"]);
 });
