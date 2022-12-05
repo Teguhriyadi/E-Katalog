@@ -41,7 +41,7 @@ class PaketPreorderController extends Controller
             'harga_paket'   => $validatedData['harga_paket'],
             'qty_paket'     => $validatedData['qty_paket'],
             'desc_paket'    => $validatedData['desc_paket'],
-            'slug'          => Str::slug($validatedData['slug']), //rada error tadi
+            'slug'          => Str::slug($validatedData["nama_paket"]), //rada error tadi
             'status_paket'  => $request->status_paket == true ? '1' :'0'
         ]);
 
@@ -54,8 +54,8 @@ class PaketPreorderController extends Controller
                 $gambar_paket += 1;
                 $ext            = $imageFile->getClientOriginalExtension();
                 $filename       = time().$i++.'.'.$ext; //yg ini $i nya diganti jd $gambar_paket ga ka kalo yg $i ga dipake
-                $imageFile->move('$uploadPath, $filename');
-                $finalImagePathName = $uploadPath.$filename;
+                $imageFile->move($uploadPath, $filename);
+                $finalImagePathName = $filename;
 
 
                 $paket->gambarPaket()->create([
@@ -76,62 +76,52 @@ class PaketPreorderController extends Controller
     }
 
     public function update (PaketPreorderFormRequest $request, string $id_paket){
-        
+
         $validatedData = $request->validated();
 
         $paket = Katalog::findOrFail($validatedData['idkatalog'])
-                    ->paketpreorder()->where('id_paket', $id_paket)->first();
-        if($paket){ 
-            
+        ->paketpreorder()->where('id_paket', $id_paket)->first();
+        if($paket){
+
             $paket->update([
-            'id_paket'      => $validatedData['id_paket'],
-            'idkatalog'     => $validatedData['idkatalog'],
-            'idbuku'        => $validatedData['idbuku'],
-            'nama_paket'    => $validatedData['nama_paket'],
-            'harga_paket'   => $validatedData['harga_paket'],
-            'qty_paket'     => $validatedData['qty_paket'],
-            'desc_paket'    => $validatedData['desc_paket'],
-            'slug'          => Str::slug($validatedData['slug']), //rada error tadi
-            'status_paket'  => $request->status_paket == true ? '1' :'0'
+                'id_paket'      => $validatedData['id_paket'],
+                'idkatalog'     => $validatedData['idkatalog'],
+                'idbuku'        => $validatedData['idbuku'],
+                'nama_paket'    => $validatedData['nama_paket'],
+                'harga_paket'   => $validatedData['harga_paket'],
+                'qty_paket'     => $validatedData['qty_paket'],
+                'desc_paket'    => $validatedData['desc_paket'],
+                'slug'          => Str::slug($validatedData['nama_paket']), //rada error tadi
+                'status_paket'  => $request->status_paket == true ? '1' :'0'
             ]);
 
             if($request->hasFile('cover_paket')){
-                $uploadPath = 'uploads/paketpreorder/'; 
+                $uploadPath = 'uploads/paketpreorder/';
 
-            $i = 1; //$gambarpaket = 1 ??
-            $gambar_paket = date("YmdHis");
-            foreach($request->file('cover_paket') as $imageFile){
-                $gambar_paket += 1;
-                $ext            = $imageFile->getClientOriginalExtension();
-                $filename       = time().$i++.'.'.$ext; //time().$gambarpaket++.'.'.$ext; ??
-                $imageFile->move($uploadPath, $filename);
-                $finalImagePathName = $uploadPath.$filename;
+                $i = 1; //$gambarpaket = 1 ??
+                $gambar_paket = date("YmdHis");
+                foreach($request->file('cover_paket') as $imageFile){
+                    $gambar_paket += 1;
+                    $ext            = $imageFile->getClientOriginalExtension();
+                    $filename       = time().$i++.'.'.$ext; //time().$gambarpaket++.'.'.$ext; ??
+                    $imageFile->move($uploadPath, $filename);
+                    $finalImagePathName = $filename;
 
-                 
-                $paket->gambarPaket()->create([ //buat simpen datanya
-                    'idpaket' => $paket->id_paket, //idpaket dari GambarPaket
-                    'cover_paket' => $finalImagePathName
-                ]);
+                    $paket->gambarPaket()->create([
+                        'id_gambar_paket' => $gambar_paket,
+                        'idpaket' => $paket->id_paket, //idpaket dari GambarPaket
+                        'cover_paket' => $finalImagePathName
+                    ]);
+                }
             }
+            return redirect ('/admin/paketpreorder')->with('message', 'Data paket pre-order berhasil ditambahkan!');
         }
-        return redirect ('/admin/paketpreorder')->with('message', 'Data paket pre-order berhasil ditambahkan!');
-        }
-        
+
         else{
             return redirect('admin/paketpreorder')->with('message', 'Produk tidak ditemukan');
         }
     }
 
-    //controller hapus gambar
-    public function destroyImage(string $id_gambar_paket){
-
-            $gambarPaket = GambarPaket::findOrFail($id_gambar_paket);
-            if(File::exists($gambarPaket->cover_paket)){
-                File::delete($gambarPaket->cover_paket);
-            }
-            $gambarPaket->delete();
-            return redirect('admin/paketpreorder')->with('message', 'Gambar paket berhasil dihapus.');
-        }
     public function destroy(string $id_paket){
         $paket = PaketPreorder::findOrFail($id_paket);
         if($paket->gambarPaket){
@@ -143,6 +133,19 @@ class PaketPreorderController extends Controller
         }
         $paket->delete();
         return redirect()->back()->with('message', 'Data paket berserta gambar telah terhapus.');
-       
-    } 
+
+    }
+
+    public function hapus_gambar_paket($id_gambar_paket)
+    {
+        $gambar_paket = GambarPaket::where("id_gambar_paket", $id_gambar_paket)->first();
+        $path = "uploads/paketpreorder/" . $gambar_paket->cover_paket;
+        if (File::exists($path)) {
+            File::delete($path);
+        }
+
+        $gambar_paket->delete();
+
+        return back()->with('message', 'Gambar paket berhasil dihapus.');
+    }
 }

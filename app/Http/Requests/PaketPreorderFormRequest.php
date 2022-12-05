@@ -39,7 +39,7 @@ class PaketPreorderFormRequest extends FormRequest
                 'string',
                 'max:6'
             ],
-            
+
             'nama_paket' => [
                 'required',
                 'string'
@@ -53,10 +53,6 @@ class PaketPreorderFormRequest extends FormRequest
                 'integer'
             ],
             'desc_paket' => [
-                'required',
-                'string'
-            ],
-            'slug' => [
                 'required',
                 'string'
             ],
