@@ -23,7 +23,8 @@ return new class extends Migration
             $table->integer('qty_paket');
             $table->longText('desc_paket');
             $table->string('slug');
-            $table->tinyInteger('status_paket')->default('0');
+            $table->datetime("tanggal");
+            $table->datetime("batas");
         });
 
         Schema::table('paket_preorder', function (Blueprint $table){

@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KatalogController;
 use App\Http\Controllers\Admin\PaketPreorderController;
 use App\Http\Controllers\Autentikasi\AutentikasiController;
+use App\Http\Controllers\User\LoginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,10 +22,21 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('beranda', [
-        "title" => "Beranda"
-    ]);
+Route::get("/login", [LoginController::class, "login"]);
+Route::post("/login", [LoginController::class, "post_login"]);
+Route::get("/register", [LoginController::class, "register"]);
+Route::post("/register", [LoginController::class, "post_register"]);
+
+Route::get("/", [UserController::class, "home"]);
+Route::post("/beli/{id_paket}", [UserController::class, "beli"]);
+Route::get("/keranjang", [UserController::class, "keranjang"]);
+Route::get("/hapus_keranjang/{id}", [UserController::class, "hapus_keranjang"]);
+Route::get("/checkout", [UserController::class, "checkout"]);
+Route::get("/hapus_checkout/{id}", [UserController::class, "hapus_checkout"]);
+Route::post("/checkout", [UserController::class, "post_checkout"]);
+Route::get("/sign_out", function() {
+    Auth::logout();
+    return redirect("/login");
 });
 
 Route::get('/katalog', function () {
@@ -38,9 +51,15 @@ Route::get('/readerspick', function (){
     ]);
 });
 
+Route::get("/data", function() {
+    return view("user.layout.main");
+});
+
 Route::group(["middleware" => ["guest"]], function() {
     Route::get("/auth", [AutentikasiController::class, "login"]);
+    Route::get("/auth/register", [AutentikasiController::class, "register"]);
     Route::post("/auth", [AutentikasiController::class, "post_login"]);
+    Route::post("/auth/register", [AutentikasiController::class, "post_register"]);
 });
 
 Route::group(["middleware" => ["cek_status"]], function() {
@@ -55,10 +74,4 @@ Route::group(["middleware" => ["cek_status"]], function() {
     });
     Route::get("/logout", [AutentikasiController::class, "logout"]);
 });
-
-Auth::routes(); //otentikasi
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
 

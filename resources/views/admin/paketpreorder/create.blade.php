@@ -85,10 +85,26 @@
                         </div>
                         <!-- status paket -->
                         <div class = "mb-3">
-                            <input type = "checkbox" name = "status_paket" style="width: 15px; height: 15px;"/>
-                            <label> Paket Tersedia </label>
-                            @error('desc_paket') <small class = "text-danger">{{ $message }}</small>
-                            @enderror
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="tanggal"> Tanggal </label>
+                                    @error("tanggal")
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                    @enderror
+                                    <input type="date" class="form-control" name="tanggal" id="tanggal">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="batas"> Batas </label>
+                                    @error("batas")
+                                    <small class="text-danger">
+                                        {{ $message }}
+                                    </small>
+                                    @enderror
+                                    <input type="date" class="form-control" name="batas" id="batas">
+                                </div>
+                            </div>
                         </div>
                         <div class = "col-md-12 mb-3">
                             <button type = "submit" class = "btn btn-primary float-end">Save</button>

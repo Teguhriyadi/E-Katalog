@@ -49,6 +49,6 @@ class AkunController extends Controller
     {
         User::where("id_users", $id_users)->delete();
 
-        return back()->with('message', 'Data User Berhasil Diubah!');
+        return back()->with('message', 'Data User Berhasil Dihapus!');
     }
 }

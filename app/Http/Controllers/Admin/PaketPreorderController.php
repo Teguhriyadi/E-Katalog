@@ -42,7 +42,8 @@ class PaketPreorderController extends Controller
             'qty_paket'     => $validatedData['qty_paket'],
             'desc_paket'    => $validatedData['desc_paket'],
             'slug'          => Str::slug($validatedData["nama_paket"]), //rada error tadi
-            'status_paket'  => $request->status_paket == true ? '1' :'0'
+            'tanggal'  => $request->tanggal,
+            'batas' => $request->batas
         ]);
 
         if($request->hasFile('cover_paket')){

@@ -24,7 +24,8 @@ class PaketPreorder extends Model
             'qty_paket',
             'desc_paket',
             'slug',
-            'status_paket'
+            'tanggal',
+            'batas'
     ];
 
     protected $primaryKey = 'id_paket';
@@ -45,5 +46,11 @@ class PaketPreorder extends Model
 
     public function gambarPaket(){
         return $this->hasMany(GambarPaket::class, 'idpaket', 'id_paket');
+    }
+
+    static function detail_paket($id_paket) {
+        $data = PaketPreorder::where("id_paket", $id_paket)->first();
+
+        return $data;
     }
 }

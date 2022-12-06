@@ -56,8 +56,11 @@ class PaketPreorderFormRequest extends FormRequest
                 'required',
                 'string'
             ],
-            'status_paket' => [
-                'nullable'
+            'tanggal' => [
+                'required'
+            ],
+            'batas' => [
+                'required'
             ],
             'cover_paket' => [
                 'nullable',
