@@ -25,4 +25,21 @@ class TagController extends Controller
 
         return back()->with('message', 'Tag Berhasil Ditambahkan!');
     }
+
+    public function update(Request $request, $id)
+    {
+        Tag::where("id", $id)->update([
+            "nama" => $request->nama,
+            "slug" => Str::slug($request->nama)
+        ]);
+
+        return back()->with('message', 'Tag Berhasil Diubah!');
+    }
+
+    public function destroy($id)
+    {
+        Tag::where("id", $id)->delete();
+
+        return back()->with('message', 'Tag Berhasil Dihapus!');
+    }
 }

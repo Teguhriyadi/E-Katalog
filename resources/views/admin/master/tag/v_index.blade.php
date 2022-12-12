@@ -1,8 +1,14 @@
-@extends('layouts.admin')
+@extends('layouts.main')
+
+@section("title_breadcrumb")
+
+<h1 class="h3 mb-0 text-gray-800">Tags</h1>
+
+@endsection
 
 @section("component_css")
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
+<link href="{{ url('/theme') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 @endsection
 
@@ -21,87 +27,131 @@
 
     <!-- Tambah Data -->
     <div class="col-md-4 mb-4">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">
-                    Tambah Data
-                </h4>
-                <form class="form-sample" action="{{ url('/admin/master/tag') }}" method="POST">
-                    @csrf
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    <i class="fa fa-plus"></i> Tambah Data
+                </h6>
+            </div>
+            <form action="{{ url('/admin/master/tag') }}" method="POST">
+                @csrf
+                <div class="card-body">
                     <div class="form-group">
                         <label for="nama"> Nama </label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama Tag">
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama">
                     </div>
-                    <button type="reset" class="btn btn-inverse-danger btn-sm">
-                        Kembali
-                    </button>
-                    <button type="submit" class="btn btn-inverse-primary btn-sm">
-                        Tambah
-                    </button>
-                </form>
-            </div>
+                </div>
+                <div class="card-footer">
+                    @include("admin.components.btn-tambah")
+                </div>
+            </form>
         </div>
     </div>
     <!-- END Form Tambah Data -->
 
     <!-- Tabel -->
     <div class="col-md-8">
-        <div class="card">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            </div>
             <div class="card-body">
-                <h4 class="card-title">
-                    Tags
-                </h4>
-                <table id="myTable" class="table table-striped" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th class="text-center">No.</th>
-                            <th class="text-center">Tag</th>
-                            <th class="text-center">Slug</th>
-                            <th class="text-center">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @php
-                        $no = 0
-                        @endphp
-                        @foreach ($tags as $item)
-                        <tr>
-                            <td class="text-center">{{ ++$no }}.</td>
-                            <td class="text-center">{{ $item->nama }}</td>
-                            <td class="text-center">{{ $item->slug }}</td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-inverse-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModalEdit-{{ $item->id }}" style="padding: 10px 15px;">
-                                    Edit
-                                </button>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th class="text-center">No.</th>
+                                <th class="text-center">Nama</th>
+                                <th class="text-center">Slug</th>
+                                <th class="text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php
+                            $no = 0
+                            @endphp
+                            @foreach ($tags as $item)
+                            <tr>
+                                <td class="text-center">{{ ++$no }}.</td>
+                                <td class="text-center">{{ $item->nama }}</td>
+                                <td class="text-center">{{ $item->slug }}</td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalEdit-{{ $item->id }}">
+                                        <i class="fa fa-edit"></i> Edit
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalHapus-{{ $item->id }}">
+                                        <i class="fa fa-trash"></i> Hapus
+                                    </button>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
     <!-- END Tabel -->
 </div>
 
-<!-- Modal -->
+<!-- Modal Edit -->
 @foreach ($tags as $item)
 <div class="modal fade" id="exampleModalEdit-{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <i class="fa fa-edit"></i> Edit Data
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                ...
+            <form action="{{ url('/admin/master/tag/'.$item->id) }}" method="POST">
+                @method("PUT")
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="nama"> Hamdan </label>
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" value="{{ $item->nama }}">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @include("admin.components.btn-edit")
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- END -->
+
+<!-- Modal Hapus -->
+@foreach ($tags as $item)
+<div class="modal fade" id="exampleModalHapus-{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <i class="fa fa-trash"></i> Hapus Data
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal fade">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+            <form action="{{ url('/admin/master/tag/'.$item->id) }}" method="POST">
+                @method("DELETE")
+                @csrf
+                <div class="modal-body">
+                    <p>
+                        Apakah Anda Yakin Untuk Menghapus Data
+                        <strong>{{ $item->nama }}</strong> ?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    @include("admin.components.btn-hapus")
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -112,14 +162,10 @@
 
 @section("component_js")
 
-<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ url('/theme') }}/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="{{ url('/theme') }}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-<script type="text/javascript">
-    $(document).ready( function () {
-        $('#myTable').DataTable();
-    } );
-</script>
+<!-- Page level custom scripts -->
+<script src="{{ url('/theme') }}/js/demo/datatables-demo.js"></script>
 
 @endsection
