@@ -1,37 +1,22 @@
-@extends('layouts.admin')
+@extends('layouts.main')
+
+@section("title_breadcrumb")
+
+<h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+
+@endsection
 
 @section('content')
 
-<div class="row">
-    <div class="col-md-12 grid-margin">
-        <div class="d-flex justify-content-between flex-wrap">
-            <div class="d-flex align-items-end flex-wrap">
-                <div class="me-md-3 me-xl-5">
-                    <h2>Selamat Datang {{ Auth::user()->nama }} </h2>
-                    <p class="mb-md-0">
-                        di Aplikasi Loveable Publishing
-                    </p>
-                </div>
-                <div class="d-flex">
-                    <i class="mdi mdi-home text-muted hover-cursor"></i>
-                    <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Dashboard&nbsp;/&nbsp;</p>
-                    <p class="text-primary mb-0 hover-cursor">Analytics</p>
-                </div>
-            </div>
-            <div class="d-flex justify-content-between align-items-end flex-wrap">
-                <button type="button" class="btn btn-light bg-white btn-icon me-3 d-none d-md-block ">
-                    <i class="mdi mdi-download text-muted"></i>
-                </button>
-                <button type="button" class="btn btn-light bg-white btn-icon me-3 mt-2 mt-xl-0">
-                    <i class="mdi mdi-clock-outline text-muted"></i>
-                </button>
-                <button type="button" class="btn btn-light bg-white btn-icon me-3 mt-2 mt-xl-0">
-                    <i class="mdi mdi-plus text-muted"></i>
-                </button>
-                <button class="btn btn-primary mt-2 mt-xl-0">Generate report</button>
-            </div>
-        </div>
-    </div>
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Selamat Datang <strong>Mohammad</strong> </h4>
+    <p>
+        di <strong>Aplikasi Proklim Kota Cirebon.</strong>
+    </p>
+    <hr>
+    <p class="mb-0">
+        Silahkan Pilih Menu Untuk Memulai Program
+    </p>
 </div>
 
 @endsection

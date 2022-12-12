@@ -1,24 +1,58 @@
 <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Loveable Publishing | {{ $title }}</title>
-      <link rel = "stylesheet" href = "css/style.css">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    </head>
-    <body>
+<html lang="en">
 
-      @include('partials.navbar')
+<head>
 
-    <!-- page content -->
-    <div class="page-content page-home">
-      @yield('page-content')
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Loveable - @yield("title") </title>
+
+    @include('layouts.css.style_css')
+
+    @yield("component_css")
+
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        @include('layouts.sidebar.v_sidebar')
+        <!-- End of Sidebar -->
+
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                @include('layouts.navbar.v_navbar')
+
+                <div class="container-fluid">
+                  @yield("title_breadcrumb")
+                    <hr>
+                  @yield("content")
+                </div>
+            </div>
+
+            <!-- Footer -->
+            @include('layouts.footer.v_footer')
+            <!-- End Footer -->
+        </div>
     </div>
 
-    <!--footer-->
-    @include('partials.footer')
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    </body>
-  </html>
+    <!-- Logout Modal-->
+    @include('layouts.logout-modal.v_logout')
+    <!-- End Logout -->
+
+    @include('layouts.js.style_js')
+
+    @yield("component_js")
+
+</body>
+
+</html>

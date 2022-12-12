@@ -23,6 +23,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get("/templat_admin", function() {
+    return view("layouts.main");
+});
+
 Route::get("/login", [LoginController::class, "login"]);
 Route::post("/login", [LoginController::class, "post_login"]);
 Route::get("/register", [LoginController::class, "register"]);
