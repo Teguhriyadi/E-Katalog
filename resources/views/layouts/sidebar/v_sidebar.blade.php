@@ -43,6 +43,9 @@
                 <a class="collapse-item" href="{{ url('/admin/master/katalog') }}">
                     Katalog
                 </a>
+                <a class="collapse-item" href="{{ url('/admin/master/buku') }}">
+                    Buku
+                </a>
             </div>
         </div>
     </li>

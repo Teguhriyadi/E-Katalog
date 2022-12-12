@@ -14,15 +14,15 @@ class BukuController extends Controller
     //main page buku
     public function index()
     {
-        $data["listbuku"] = Buku::get();
+        $data["buku"] = Buku::get();
 
-        return view('admin.buku.index', $data);
+        return view("admin.master.buku.v_index", $data);
     }
 
     //input data
     public function create()
     {
-        return view('admin.buku.create');
+        return view("admin.master.buku.v_create");
     }
 
     //ngesave data  //buat save image upload //nentuin nama file ext  //nentuin tempat file move
@@ -38,7 +38,7 @@ class BukuController extends Controller
             $filename = time().'.'.$ext;
             $file->move('uploads/buku/', $filename);
             $buku->cover_buku = $filename;
-            }
+        }
 
         //$buku->cover_buku       = $validatedData['cover_buku'];
         $buku->judul_buku       = $validatedData['judul_buku'];
@@ -53,27 +53,20 @@ class BukuController extends Controller
 
         $buku->save();
 
-        return redirect('admin/buku') -> with('message', 'Data Buku Berhasil Ditambahkan!');
+        return back()->with('message', 'Data Buku Berhasil Ditambahkan!');
     }
 
-    public function edit(Buku $buku){
+    public function show($id_buku)
+    {
+        $data["detail"] = Buku::where("id_buku", $id_buku)->first();
 
-        return view('admin.buku.edit', compact('buku'));
+        return view("admin.master.buku.v_detail", $data);
+    }
+
+    public function edit(Buku $buku)
+    {
+        return view('admin.master.buku.v_edit', compact('buku'));
         //compact bwt passing smua data di 'buku' ke file view buku/edit
-    }
-
-    //HAPUS
-    public function destroy($id){
-        $id = Buku::find($id);
-        $path = "uploads/buku/" . $id->cover_buku;
-        if (File::exists($path)) {
-            File::delete($path);
-        }
-
-        $id->delete();
-        session()->flash('message', 'Data telah terhapus.');
-
-        return back();
     }
 
     public function update (BukuFormRequest $request, $buku){
@@ -109,7 +102,20 @@ class BukuController extends Controller
 
         $buku->update(); //kalo inputannya valid bakal diupdate
 
-        return redirect('admin/buku') -> with('message', 'Data Buku Berhasil Diubah!');
+        return redirect("/admin/master/buku")->with('message', 'Data Buku Berhasil Diubah!');
+    }
 
+    //HAPUS
+    public function destroy($id){
+        $id = Buku::find($id);
+        $path = "uploads/buku/" . $id->cover_buku;
+        if (File::exists($path)) {
+            File::delete($path);
+        }
+
+        $id->delete();
+        session()->flash('message', 'Data telah terhapus.');
+
+        return back();
     }
 }
