@@ -60,14 +60,13 @@
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
         aria-controls="collapsePages">
         <i class="fas fa-fw fa-folder"></i>
-        <span>Pages</span>
+        <span>Users</span>
     </a>
     <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
     data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Login Screens:</h6>
-        <a class="collapse-item" href="login.html">Login</a>
-        <a class="collapse-item active" href="blank.html">Blank Page</a>
+        <a class="collapse-item" href="{{ url('/admin/users/administrator') }}">Users Administrator</a>
+        <a class="collapse-item active" href="blank.html">Profil Saya</a>
     </div>
 </div>
 </li>
