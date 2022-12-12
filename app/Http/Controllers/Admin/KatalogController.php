@@ -14,14 +14,11 @@ class KatalogController extends Controller
     {
         $data["katalogs"] = Katalog::get();
 
-        return view('admin.katalog.index', $data);
+        return view('admin.master.katalog.v_index', $data);
     }
 
-    public function create(){
-        return view('admin.katalog.create');
-    }
-
-    public function store(KatalogFormRequest $request){
+    public function store(KatalogFormRequest $request)
+    {
         // Validasi Semua Inputan
         $validatedData = $request -> validated();
 
@@ -32,33 +29,28 @@ class KatalogController extends Controller
 
         $katalog->save();
 
-        return redirect('admin/katalog') -> with('message', 'Katalog Berhasil Ditambahkan!');
+        return back()->with('message', 'Katalog Berhasil Ditambahkan!');
     }
 
-    public function edit(Katalog $katalog){
-
-        return view('admin.katalog.edit', compact('katalog'));
-    }
-
-    public function destroy($id)
+    public function update(KatalogFormRequest $request, $id_katalog)
     {
-        $id = Katalog::find($id);
-        $id->delete();
-        session()->flash('message', 'Data telah terhapus.');
-
-        return back();
-    }
-
-    public function update(KatalogFormRequest $request, $katalog){
-        $katalog = Katalog::findOrFail($katalog); /** cari hasil datanya dlu, trus next divalidasi */
+        $katalog = Katalog::findOrFail($id_katalog); /** cari hasil datanya dlu, trus next divalidasi */
         $validatedData = $request -> validated(); /**ngevalidasi all smua inputan */
 
-        $katalog -> nama_katalog = $validatedData['nama_katalog'];
-        $katalog -> slug = Str::slug($katalog->nama_katalog);
+        $katalog->nama_katalog = $validatedData['nama_katalog'];
+        $katalog->slug = Str::slug($katalog->nama_katalog);
 
-        $katalog -> update(); /**kalo inputannya valid bakal diupdate*/
+        $katalog->update(); /**kalo inputannya valid bakal diupdate*/
 
-        return redirect('admin/katalog') -> with('message', 'Katalog Berhasil Diubah!');
+        return back()->with('message', 'Katalog Berhasil Diubah!');
+    }
+
+    public function destroy($id_katalog)
+    {
+        $id = Katalog::find($id_katalog);
+        $id->delete();
+
+        return back()->with('message', 'Katalog Berhasil Diubah!');;
     }
 
 }

@@ -69,9 +69,9 @@ Route::group(["middleware" => ["cek_status"]], function() {
 
         Route::prefix("master")->group(function() {
             Route::resource("tag", TagController::class);
+            Route::resource("/katalog", KatalogController::class);
         });
 
-        Route::resource("/katalog", KatalogController::class);
         Route::resource("/buku", BukuController::class);
         Route::get("/paketpreorder/{id_gambar_paket}/delete", [PaketPreorderController::class, "hapus_gambar_paket"]);
         Route::resource("/paketpreorder", PaketPreorderController::class);

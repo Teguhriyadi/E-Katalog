@@ -1,10 +1,10 @@
 @extends('layouts.main')
 
-@section("title", "Tags")
+@section("title", "Katalog")
 
 @section("title_breadcrumb")
 
-<h1 class="h3 mb-0 text-gray-800">Tags</h1>
+<h1 class="h3 mb-0 text-gray-800">Katalog</h1>
 
 @endsection
 
@@ -35,12 +35,16 @@
                     <i class="fa fa-plus"></i> Tambah Data
                 </h6>
             </div>
-            <form action="{{ url('/admin/master/tag') }}" method="POST">
+            <form action="{{ url('/admin/master/katalog') }}" method="POST">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="nama"> Nama </label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama">
+                        <label for="id_katalog"> ID Katalog </label>
+                        <input type="text" class="form-control" name="id_katalog" id="id_katalog" placeholder="Masukkan ID Katalog">
+                    </div>
+                    <div class="form-group">
+                        <label for="nama_katalog"> Nama Katalog </label>
+                        <input type="text" class="form-control" name="nama_katalog" id="nama_katalog" placeholder="Masukkan Nama Katalog">
                     </div>
                 </div>
                 <div class="card-footer">
@@ -65,7 +69,8 @@
                         <thead>
                             <tr>
                                 <th class="text-center">No.</th>
-                                <th class="text-center">Nama</th>
+                                <th class="text-center">ID Katalog</th>
+                                <th>Nama</th>
                                 <th class="text-center">Slug</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
@@ -74,16 +79,17 @@
                             @php
                             $no = 0
                             @endphp
-                            @foreach ($tags as $item)
+                            @foreach ($katalogs as $item)
                             <tr>
                                 <td class="text-center">{{ ++$no }}.</td>
-                                <td class="text-center">{{ $item->nama }}</td>
+                                <td class="text-center">{{ $item->id_katalog }}</td>
+                                <td>{{ $item->nama_katalog }}</td>
                                 <td class="text-center">{{ $item->slug }}</td>
                                 <td class="text-center">
-                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalEdit-{{ $item->id }}">
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalEdit-{{ $item->id_katalog }}">
                                         <i class="fa fa-edit"></i> Edit
                                     </button>
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalHapus-{{ $item->id }}">
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalHapus-{{ $item->id_katalog }}">
                                         <i class="fa fa-trash"></i> Hapus
                                     </button>
                                 </td>
@@ -99,8 +105,8 @@
 </div>
 
 <!-- Modal Edit -->
-@foreach ($tags as $item)
-<div class="modal fade" id="exampleModalEdit-{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach ($katalogs as $item)
+<div class="modal fade" id="exampleModalEdit-{{ $item->id_katalog }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -111,13 +117,17 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ url('/admin/master/tag/'.$item->id) }}" method="POST">
+            <form action="{{ url('/admin/master/katalog/'.$item->id_katalog) }}" method="POST">
                 @method("PUT")
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="nama"> Hamdan </label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" value="{{ $item->nama }}">
+                        <label for="id_katalog"> ID Katalog </label>
+                        <input type="text" class="form-control" name="id_katalog" id="id_katalog" placeholder="Masukkan ID Katalog" value="{{ $item->id_katalog }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="nama_katalog"> Nama Katalog </label>
+                        <input type="text" class="form-control" name="nama_katalog" id="nama_katalog" placeholder="Masukkan Nama Katalog" value="{{ $item->nama_katalog }}">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -131,8 +141,8 @@
 <!-- END -->
 
 <!-- Modal Hapus -->
-@foreach ($tags as $item)
-<div class="modal fade" id="exampleModalHapus-{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach ($katalogs as $item)
+<div class="modal fade" id="exampleModalHapus-{{ $item->id_katalog }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -143,13 +153,13 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ url('/admin/master/tag/'.$item->id) }}" method="POST">
+            <form action="{{ url('/admin/master/katalog/'.$item->id_katalog) }}" method="POST">
                 @method("DELETE")
                 @csrf
                 <div class="modal-body">
                     <p>
                         Apakah Anda Yakin Untuk Menghapus Data
-                        <strong>{{ $item->nama }}</strong> ?
+                        <strong>{{ $item->nama_katalog }}</strong> ?
                     </p>
                 </div>
                 <div class="modal-footer">
