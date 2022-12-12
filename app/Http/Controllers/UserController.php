@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Keranjang;
 use App\Models\KeranjangDetail;
 use App\Models\PaketPreorder;
+use App\Models\Pembelian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -104,6 +105,13 @@ class UserController extends Controller
 
     public function post_checkout(Request $request)
     {
-        echo "ada";
+        Pembelian::create([
+            "customer_id" => Auth::user()->id_users,
+            "tanggal_pembelian" => date("Ymd"),
+            "total_pembelian" => 5000000,
+            "alamat" => $request->alamat
+        ]);
+
+
     }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AkunController;
 use App\Http\Controllers\Admin\BukuController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KatalogController;
+use App\Http\Controllers\Admin\Master\TagController;
 use App\Http\Controllers\Admin\PaketPreorderController;
 use App\Http\Controllers\Autentikasi\AutentikasiController;
 use App\Http\Controllers\User\LoginController;
@@ -65,6 +66,10 @@ Route::group(["middleware" => ["guest"]], function() {
 Route::group(["middleware" => ["cek_status"]], function() {
     Route::prefix("admin")->group(function() {
         Route::get("/dashboard", [DashboardController::class, "index"]);
+
+        Route::prefix("master")->group(function() {
+            Route::resource("tag", TagController::class);
+        });
 
         Route::resource("/katalog", KatalogController::class);
         Route::resource("/buku", BukuController::class);
