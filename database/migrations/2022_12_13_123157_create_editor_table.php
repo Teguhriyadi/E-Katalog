@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('customer', function (Blueprint $table) {
-            $table->string("id_customer")->primary();
-            $table->string("user_id");
-            $table->bigInteger("nomer_telepon");
-            $table->string("alamat", 100);
+        Schema::create('editor', function (Blueprint $table) {
+            $table->string("id_editor", 70)->primary();
+            $table->string("user_id", 70);
+            $table->string("nomer_telepon", 20);
             $table->enum("gender", ["L", "P"]);
+            $table->text("alamat");
+            $table->timestamps();
         });
     }
 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer');
+        Schema::dropIfExists('editor');
     }
 };

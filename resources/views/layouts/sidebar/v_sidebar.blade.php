@@ -62,13 +62,21 @@
     <li class="nav-item active">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
         aria-controls="collapsePages">
-        <i class="fas fa-fw fa-folder"></i>
+        <i class="fas fa-fw fa-users"></i>
         <span>Users</span>
     </a>
     <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
     data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="{{ url('/admin/users/administrator') }}">Users Administrator</a>
+        <a class="collapse-item" href="{{ url('/admin/users/editor') }}">
+            Editor
+        </a>
+        <a class="collapse-item" href="{{ url('/admin/users/penulis') }}">
+            Penulis
+        </a>
+        <a class="collapse-item" href="{{ url('/admin/users/administrator') }}">
+            Administrator
+        </a>
         <a class="collapse-item active" href="blank.html">Profil Saya</a>
     </div>
 </div>

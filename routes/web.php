@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\Account\AkunController;
+use App\Http\Controllers\Admin\Account\EditorController;
+use App\Http\Controllers\Admin\Account\PenulisController;
 use App\Http\Controllers\Admin\BukuController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KatalogController;
@@ -74,6 +76,8 @@ Route::group(["middleware" => ["cek_status"]], function() {
         });
 
         Route::prefix("users")->group(function() {
+            Route::resource("/editor", EditorController::class);
+            Route::resource("/penulis", PenulisController::class);
             Route::resource("/administrator", AkunController::class);
         });
 
