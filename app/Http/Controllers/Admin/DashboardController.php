@@ -11,4 +11,9 @@ class DashboardController extends Controller
     {
         return view ("admin.dashboard");
     }
+
+    public function dashboard_editor()
+    {
+        return view("editor.v_dashboard");
+    }
 }

@@ -66,23 +66,31 @@ Route::group(["middleware" => ["guest"]], function() {
 });
 
 Route::group(["middleware" => ["cek_status"]], function() {
-    Route::prefix("admin")->group(function() {
-        Route::get("/dashboard", [DashboardController::class, "index"]);
+    Route::group(["middleware" => ["can:admin"]], function() {
+        Route::prefix("admin")->group(function() {
+            Route::get("/dashboard", [DashboardController::class, "index"]);
 
-        Route::prefix("master")->group(function() {
-            Route::resource("tag", TagController::class);
-            Route::resource("/katalog", KatalogController::class);
-            Route::resource("/buku", BukuController::class);
+            Route::prefix("master")->group(function() {
+                Route::resource("tag", TagController::class);
+                Route::resource("/katalog", KatalogController::class);
+                Route::resource("/buku", BukuController::class);
+            });
+
+            Route::prefix("users")->group(function() {
+                Route::resource("/editor", EditorController::class);
+                Route::resource("/penulis", PenulisController::class);
+                Route::resource("/administrator", AkunController::class);
+            });
+
+            Route::get("/paketpreorder/{id_gambar_paket}/delete", [PaketPreorderController::class, "hapus_gambar_paket"]);
+            Route::resource("/paketpreorder", PaketPreorderController::class);
         });
+    });
 
-        Route::prefix("users")->group(function() {
-            Route::resource("/editor", EditorController::class);
-            Route::resource("/penulis", PenulisController::class);
-            Route::resource("/administrator", AkunController::class);
+    Route::group(["middleware" => ["can:editor"]], function() {
+        Route::prefix("editor")->group(function() {
+            Route::get("/dashboard", [DashboardController::class, "dashboard_editor"]);
         });
-
-        Route::get("/paketpreorder/{id_gambar_paket}/delete", [PaketPreorderController::class, "hapus_gambar_paket"]);
-        Route::resource("/paketpreorder", PaketPreorderController::class);
     });
     Route::get("/logout", [AutentikasiController::class, "logout"]);
 });

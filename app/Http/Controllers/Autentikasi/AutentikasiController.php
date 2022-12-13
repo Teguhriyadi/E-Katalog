@@ -39,8 +39,8 @@ class AutentikasiController extends Controller
 
                     if ($user->role == "admin") {
                         return redirect("/admin/dashboard");
-                    } else {
-                        echo "Member";
+                    } else if ($user->role == "editor") {
+                        return redirect("/editor/dashboard");
                     }
                 }
             }

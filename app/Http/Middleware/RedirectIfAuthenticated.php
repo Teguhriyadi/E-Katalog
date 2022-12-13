@@ -23,7 +23,7 @@ class RedirectIfAuthenticated
             if (Auth::user()->role == "admin") {
                 return redirect('/admin/dashboard');
             } else if (Auth::user()->role == "editor") {
-                return redirect('/wali_dosen/dashboard');
+                return redirect('/editor/dashboard');
             } else if (Auth::user()->role == "penulis") {
                 return redirect('/mahasiswa/dashboard');
             } else if (Auth::user()->role == "customer") {

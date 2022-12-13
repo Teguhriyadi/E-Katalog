@@ -25,61 +25,61 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Interface
+            Menu
+        </div>
+
+        @can("admin")
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Master</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ url('/admin/master/tag') }}">
+                        Tags
+                    </a>
+                    <a class="collapse-item" href="{{ url('/admin/master/katalog') }}">
+                        Katalog
+                    </a>
+                    <a class="collapse-item" href="{{ url('/admin/master/buku') }}">
+                        Buku
+                    </a>
+                </div>
+            </div>
+        </li>
+        @endcan
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Addons
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Master</span>
+        <li class="nav-item active">
+            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+            aria-controls="collapsePages">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Users</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ url('/admin/master/tag') }}">
-                    Tags
-                </a>
-                <a class="collapse-item" href="{{ url('/admin/master/katalog') }}">
-                    Katalog
-                </a>
-                <a class="collapse-item" href="{{ url('/admin/master/buku') }}">
-                    Buku
-                </a>
-            </div>
+        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
+        data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{ url('/admin/users/editor') }}">
+                Editor
+            </a>
+            <a class="collapse-item" href="{{ url('/admin/users/penulis') }}">
+                Penulis
+            </a>
+            <a class="collapse-item" href="{{ url('/admin/users/administrator') }}">
+                Administrator
+            </a>
+            <a class="collapse-item active" href="blank.html">Profil Saya</a>
         </div>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Addons
     </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-        aria-controls="collapsePages">
-        <i class="fas fa-fw fa-users"></i>
-        <span>Users</span>
-    </a>
-    <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
-    data-parent="#accordionSidebar">
-    <div class="bg-white py-2 collapse-inner rounded">
-        <a class="collapse-item" href="{{ url('/admin/users/editor') }}">
-            Editor
-        </a>
-        <a class="collapse-item" href="{{ url('/admin/users/penulis') }}">
-            Penulis
-        </a>
-        <a class="collapse-item" href="{{ url('/admin/users/administrator') }}">
-            Administrator
-        </a>
-        <a class="collapse-item active" href="blank.html">Profil Saya</a>
-    </div>
-</div>
 </li>
 
 <!-- Nav Item - Tables -->
