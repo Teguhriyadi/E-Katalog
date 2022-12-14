@@ -7,7 +7,7 @@
                         <li>
                             <i class="fa fa-envelope-o"></i>
                             <a href="#" class="text-white">
-                                loveable@example.com
+                                loveable.redaksi@gmail.com
                             </a>
                         </li>
                         <li>
@@ -26,18 +26,18 @@
             <div class="row align-items-center">
                 <div class="col-lg-3 col-12 col-sm-6">
                     <a class="navbar-brand mr-lg-5" href="{{ url('/') }}">
-                        <img src="{{ url('/img/logo_loveable_new.png') }}">
+                        <img src="{{ url('/img/logo_loveable_new.png') }}" style = "width:100px; height:100px;" />
                         <span class="logo">
-                            Loveable
+                            <!--Loveable-->
                         </span>
                     </a>
                 </div>
                 <div class="col-lg-7 col-12 col-sm-6">
                     <form action="#" class="search">
                         <div class="input-group w-100">
-                            <input type="text" class="form-control" placeholder="Search">
+                            <input type="text" class="form-control" placeholder="Pencarian">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit">
+                                <button class="btn btn-primary" type="Cari">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </div>
@@ -70,7 +70,7 @@
             <div class="collapse navbar-collapse" id="main_nav">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link text-white" href="{{ url('/') }}">Home</a>
+                        <a class="nav-link text-white" href="{{ url('/') }}">Beranda</a>
                     </li>
                     @if (empty(Auth::user()->role))
                     <li class="nav-item">
@@ -84,7 +84,7 @@
                         <a href="{{ url('/keranjang') }}" class="nav-link text-white"> Keranjang </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/checkout') }}" class="nav-link text-white"> Checkout </a>
+                        <a href="{{ url('/checkout') }}" class="nav-link text-white"> Pesan </a> <!--checkout-->
                     </li>
                     @endif
                 </ul>
