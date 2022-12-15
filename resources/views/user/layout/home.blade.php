@@ -78,10 +78,9 @@
 <section id="services" class="services section-bg">
     <div class="container" data-aos="fade-right">
         <div class="section-header">
-            <h2>Services</h2>
+            <h2>Pengembangan Bidang</h2>
             <p>
-                Voluptatem quibusdam ut ullam perferendis repellat non ut
-                consequuntur est eveniet deleniti fignissimos eos quam
+                Kami bergerak di beberapa bidang dalam melayani customer / pelanggan kami
             </p>
         </div>
 
@@ -328,10 +327,9 @@
 <section id="testimonials" class="testimonials section-bg mt-5">
     <div class="container" data-aos="fade-right">
         <div class="section-header">
-            <h2>Testimonials</h2>
+            <h2>Apa Kata Mereka</h2>
             <p>
-                Quam sed id excepturi ccusantium dolorem ut quis dolores nisi llum
-                nostrum enim velit qui ut et autem uia reprehenderit sunt deleniti
+                Dibawah ini adalah beberapa pendapat dari para pengguna yang telah mengunjungi website
             </p>
         </div>
 

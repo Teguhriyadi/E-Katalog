@@ -45,7 +45,7 @@ class LoginController extends Controller
         }
     }
 
-    public function register()
+    public function daftar()
     {
         return view("user.autentikasi.register");
     }

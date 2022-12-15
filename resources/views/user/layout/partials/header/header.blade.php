@@ -1,16 +1,19 @@
 <header id="header" class="header d-flex align-items-center">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
-            <!-- Uncomment the line below if you also wish to use an image logo -->
-            <!-- <img src="assets/img/logo.png" alt=""> -->
-            <h1>Loveable<span></span></h1>
+            <h1>
+                Loveable
+                <span></span>
+            </h1>
         </a>
 
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
+                <li>
+                    <a href="{{ url('/') }}" class="{{ Request::segment(1) == "" ? 'active' : '' }}">Home</a>
+                </li>
                 <li class="dropdown">
                     <a href="#"><span>Price List</span>
                         <i class="bi bi-chevron-down dropdown-indicator"></i></a>
@@ -24,10 +27,10 @@
                 <li><a href="#main">About Us</a></li>
 
                 <li>
-                    <a href="{{ url('/login') }}">Login</a>
+                    <a href="{{ url('/login') }}" class="{{ Request::segment(1) == "login" ? 'active' : '' }}">Login</a>
                 </li>
                 <li>
-                    <a href="{{ url('/daftar') }}">Daftar</a>
+                    <a href="{{ url('/daftar') }}" class="{{ Request::segment(1) == "daftar" ? 'active' : '' }}">Daftar</a>
                 </li>
                 <li class="dropdown">
                     <a href="#"><span>Akun</span>

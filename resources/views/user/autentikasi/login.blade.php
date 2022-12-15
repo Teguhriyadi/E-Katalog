@@ -1,56 +1,76 @@
-@extends("user.layout.main")
+@extends('user.main')
 
-@section("title", "Login")
+@section('title', 'Login')
 
-@section("content")
+@section('component_css')
 
-<div class="row m-0 pt-3">
-    <div class="col-md-12">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <form method="POST" action="{{ url('/login') }}">
-                        @csrf
-                        <div class="card">
-                            <div class="card-body">
-                                <b>Login Pelanggan</b>
-                                <hr>
-                                <div class="mb-3 row">
-                                    <label for="email" class="col-sm-2 col-form-label">Email</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" name="email" class="form-control" id="email" placeholder="Masukkan Email" autocomplete="off">
-                                    </div>
+<link href="{{ url('') }}/assets/css/login.css" rel="stylesheet" />
+
+@endsection
+
+@section('content')
+
+<section class="background-radial-gradient overflow-hidden">
+    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+        <div class="row gx-lg-5 align-items-center mb-5">
+            <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+                <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+                    Loveable <br />
+                    <span style="color: hsl(218, 81%, 75%)">
+                        <i>
+                            " Mencari Seputar Kisah Remaja "
+                        </i>
+                    </span>
+                </h1>
+                <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+                    Kamu bisa mencari kisah - kisah sesuai dengan mood atau suasana hati kamu di loveable. Tidak hanya itu, kamu bisa juga membeli referensi buku yang sudah tersedia
+                </p>
+                <a href="{{ url('/') }}" class="btn btn-block btn-primary">
+                    Kembali Ke Halaman Awal
+                </a>
+
+            </div>
+
+            <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+                <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+                <div class="card bg-glass">
+                    <div class="card-body px-4 py-5 px-md-5">
+                        <h1 class="mb-2 text-center">
+                            <span style="color: hsl(218, 81%, 75%)">Login Akun</span>
+                        </h1>
+                        <a href="{{ url('/daftar') }}" class="mb-0"
+                        style="text-decoration: none; color: black; font-size: 14px">
+                        <p>
+                            Belum Punya Akun ?
+                            <span class="text-primary">
+                                Silahkan Buat Disini
+                            </span>
+                            </p>
+                        </a>
+                        <form method="POST" action="{{ url('/login') }}">
+                            @csrf
+                                <!-- Email input -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="emai">Email</label>
+                                    <input type="email" id="emai" class="form-control" />
                                 </div>
-                                <div class="mb-3 row">
-                                    <label for="password" class="col-sm-2 col-form-label">Password</label>
-                                    <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan Password" autocomplete="off">
-                                    </div>
+
+                                <!-- Password input -->
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="password">Password</label>
+                                    <input type="password" id="password" class="form-control" />
                                 </div>
-                                <hr>
-                                <button type="submit" class="btn btn-primary btn-sm" name="btn-login">
-                                    <i class="fa fa-plane"></i> Login
+
+                                <button type="submit" class="btn btn-primary btn-block w-100 mb-4">
+                                    Login Sekarang
                                 </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            Bergabung mejadi pelanggan kami
-                        </div>
-                        <div class="card-footer">
-                            <a href="{{ url('/register') }}">
-                                <i class="fa fa-plus"></i> Daftar
-                            </a>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<br>
+    </section>
 
-@endsection
+    @endsection

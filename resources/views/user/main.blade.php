@@ -23,6 +23,8 @@
 
     @include("user.layout.partials.css.style_css")
 
+    @yield("component_css")
+
 </head>
 
 <body>
