@@ -31,13 +31,33 @@
         @can("admin")
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-cog"></i>
+                <i class="fas fa-fw fa-bars"></i>
                 <span>Master</span>
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="{{ url('/admin/master/tag') }}">
                         Tags
+                    </a>
+                    <a class="collapse-item" href="{{ url('/admin/master/katalog') }}">
+                        Katalog
+                    </a>
+                    <a class="collapse-item" href="{{ url('/admin/master/buku') }}">
+                        Buku
+                    </a>
+                </div>
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseWeb" aria-expanded="true" aria-controls="collapseWeb">
+                <i class="fas fa-fw fa-book"></i>
+                <span>Web</span>
+            </a>
+            <div id="collapseWeb" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ url('/admin/web/carousel') }}">
+                        Carousel
                     </a>
                     <a class="collapse-item" href="{{ url('/admin/master/katalog') }}">
                         Katalog
