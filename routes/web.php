@@ -31,7 +31,6 @@ Route::post("/login", [LoginController::class, "post_login"]);
 Route::get("/register", [LoginController::class, "register"]);
 Route::post("/register", [LoginController::class, "post_register"]);
 
-Route::get("/", [UserController::class, "home"]);
 Route::post("/beli/{id_paket}", [UserController::class, "beli"]);
 Route::get("/keranjang", [UserController::class, "keranjang"]);
 Route::get("/hapus_keranjang/{id}", [UserController::class, "hapus_keranjang"]);
@@ -100,3 +99,4 @@ Route::group(["middleware" => ["cek_status"]], function() {
     Route::get("/logout", [AutentikasiController::class, "logout"]);
 });
 
+require __DIR__ . '/landing-page.php';

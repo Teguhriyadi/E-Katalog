@@ -1,96 +1,86 @@
-<footer class="footer bg-dark">
+<footer id="footer">
     <div class="footer-top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-5 col-md-6 col-12">
-                    <div class="single-footer about">
-                        <div class="logo-footer">
-                            <span class="logo">
-                                <img src="{{ url('/img/logo_loveable_new.png') }}" style = "width: 140px; height: 140px;">
-                            </span>
-                        </div><div class="contact">
-                            <ul>
-                                <li>Komplek Nuansa Kebagusan 99, Jl. Kebagusan III</li>
-                                <li>RT.8/RW.6, Kel. Kebagusan, Ps. Minggu</li>
-                                <li>Kota Jakarta Selatan, DKI Jakarta</li>
-                                <li>12520</li>
-                                <li>loveable.redaksi@gmail.com</li>
-                                <li>021-78847081</li>
-                            </ul>
-                        </div>
-                        <!--p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, magna
-                            eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
-                            facilisis luctus, metus.</p-->
-                        <!--p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456
-                                    789</a></span><p-->
-                    </div>
-                    <!-- End Single Widget -->
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <h3>About Us</h3>
+                    <p>
+                        Fotografi <br />
+                        adalah seni untk<br />
+                        Mencintai <br /><br />
+                        <strong>Phone:</strong> +1 5589 55488 55<br />
+                        <strong>Email:</strong> info@example.com<br />
+                    </p>
                 </div>
-                <div class="col-lg-2 col-md-6 col-12">
-                    <!-- Single Widget -->
-                    <div class="single-footer links">
-                        <h4>Informasi</h4>
-                        <ul>
-                            <li><a href="#">Tentang Kami</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Syarat dan Ketentuan</a></li>
-                            <li><a href="#">Hubungi Kami</a></li>
-                            <li><a href="#">Lacak Pesanan</a></li>
-                        </ul>
-                    </div>
-                    <!-- End Single Widget -->
+
+                <div class="col-lg-2 col-md-6 footer-links">
+                    <h4>Portfolio</h4>
+                    <ul>
+                        <li>
+                            <i class="bx bx-chevron-right"></i>
+                            <a href="portfolio.html">Fotografi</a>
+                        </li>
+                        <li>
+                            <i class="bx bx-chevron-right"></i>
+                            <a href="#">Videografi</a>
+                        </li>
+                        <li>
+                            <i class="bx bx-chevron-right"></i>
+                            <a href="#">Editing</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="col-lg-2 col-md-6 col-12">
-                    <!-- Single Widget -->
-                    <div class="single-footer links">
-                        <h4>Services</h4>
-                        <ul>
-                            <li><a href="#">Payment Methods</a></li>
-                            <li><a href="#">Money-back</a></li>
-                            <li><a href="#">Returns</a></li>
-                            <li><a href="#">Shipping</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                        </ul>
-                    </div>
-                    <!-- End Single Widget -->
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Price List</h4>
+                    <ul>
+                        <li>
+                            <i class="bx bx-chevron-right"></i>
+                            <a href="jasa.html">Fotografi</a>
+                        </li>
+                        <li>
+                            <i class="bx bx-chevron-right"></i>
+                            <a href="#">Videografi</a>
+                        </li>
+                        <li>
+                            <i class="bx bx-chevron-right"></i>
+                            <a href="#">Editing</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <!-- Single Widget -->
-                    <div class="single-footer social">
-                        <h4>Get In Touch</h4>
-                        <!-- Single Widget -->
-                        
-                        <!-- End Single Widget -->
-                        <h4>Ikuti Kami</h4>
-                        <ul>
-                            <li><a href="//www.facebook.com/Loveable.redaksi/"><i class="fa fa-facebook"></i> Loveable.redaksi</a></li>
-                            <li><a href="//www.twitter.com/Loveableous/"><i class="fa fa-twitter"></i> Loveablelous</a></li>
-                            <li><a href="//www.instagram.com/loveable.redaksi/"><i class="fa fa-instagram"></i> loveable.redaksi</a></li>
-                            <li><a href="//www.youtube.com/@penerbitloveable1149/"><i class="fa fa-youtube"></i> Penerbit Loveable</a></li>
-                        </ul>
-                    </div>
-                    <!-- End Single Widget -->
+
+                <div class="col-lg-4 col-md-6 footer-links">
+                    <h4>Syarat dan Ketentuan</h4>
+                    <a href="timeline.html" class="text-dark">Tamen quem nulla quae legam multos aute sint
+                        culpa legam
+                        noster magna</a>
+                    <h4 class="mt-5">Kebijakan dan privasi</h4>
+                    <a href="kebijakan.html" class="text-dark">Tamen quem nulla quae legam multos aute sint
+                        culpa legam
+                        noster magna</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="copyright">
-        <div class="container">
-            <div class="copyright-inner border-top">
-                <div class="row">
-                    <div class="col-lg-6 col-12">
-                        <div class="left">
-                            <p>
-                                Copyright © 2022
-                                <a href="#" target="_blank">
-                                    Loveable
-                                </a> -
-                                All Rights Reserved.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+    <div class="container d-md-flex py-4">
+        <div class="me-md-auto text-center text-md-start">
+            <div class="copyright">
+                &copy; Copyright <strong><span>StudioFoto</span></strong>. All Rights Reserved
             </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
         </div>
     </div>
 </footer>

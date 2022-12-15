@@ -1,10 +1,13 @@
-<link href="{{ url('/template') }}/assets/css/nucleo-icons.css" rel="stylesheet">
-<link href="{{ url('/template') }}/assets/css/font-awesome.css" rel="stylesheet">
+<link href="{{ url('') }}/assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+<link href="{{ url('') }}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="{{ url('') }}/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
 
-<link type="text/css" href="{{ url('/template') }}/assets/css/jquery-ui.css" rel="stylesheet">
+<link href="{{ url('') }}/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+<link href="{{ url('') }}/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+<link href="{{ url('') }}/assets/vendor/aos/aos.css" rel="stylesheet" />
+<link href="{{ url('') }}/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+<link href="{{ url('') }}/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
-<link type="text/css" href="{{ url('/template') }}/assets/css/argon-design-system.min.css" rel="stylesheet">
-
-<link type="text/css" href="{{ url('/template') }}/assets/css/style.css" rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<!-- Template Main CSS File -->
+<link href="{{ url('') }}/assets/css/main.css" rel="stylesheet" />
+<link href="{{ url('') }}/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />

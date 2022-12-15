@@ -1,13 +1,10 @@
-<script src="{{ url('/template') }}/assets/js/core/jquery.min.js"></script>
-<script src="{{ url('/template') }}/assets/js/core/popper.min.js"></script>
-<script src="{{ url('/template') }}/assets/js/core/bootstrap.min.js"></script>
-<script src="{{ url('/template') }}/assets/js/core/jquery-ui.min.js"></script>
+<script src="{{ url('') }}/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url('') }}/assets/vendor/aos/aos.js"></script>
+<script src="{{ url('') }}/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="{{ url('') }}/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="{{ url('') }}/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="{{ url('') }}/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="{{ url('') }}/assets/vendor/php-email-form/validate.js"></script>
 
-<!-- Optional plugins -->
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
-<!-- Argon JS -->
-<script src="{{ url('/template') }}/assets/js/argon-design-system.js"></script>
-
-<!-- Main JS-->
-<script src="{{ url('/template') }}/assets/js/main.js"></script>
+<!-- Template Main JS File -->
+<script src="{{ url('') }}/assets/js/main.js"></script>
