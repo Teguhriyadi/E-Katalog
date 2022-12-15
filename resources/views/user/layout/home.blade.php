@@ -1,6 +1,8 @@
 
 @extends("user.main")
 
+@section("title", "Home")
+
 @section("content")
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="hero">

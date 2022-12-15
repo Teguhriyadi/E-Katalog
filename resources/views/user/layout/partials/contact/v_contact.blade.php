@@ -14,60 +14,49 @@
                         <div class="row justify-content-center">
                             <div class="col-md-6 info d-flex flex-column align-items-stretch">
                                 <i class="fas fa-location"></i>
-                                <h4>Address</h4>
+                                <h4>Alamat</h4>
                                 <p>A108 Adam Street,<br />New York, NY 535022</p>
                             </div>
                             <div class="col-md-6 info d-flex flex-column align-items-stretch">
                                 <i class="fas fa-phone"></i>
-                                <h4>Call Us</h4>
+                                <h4>Telepon</h4>
                                 <p>+1 5589 55488 55<br />+1 5589 22548 64</p>
                             </div>
                             <div class="col-md-6 info d-flex flex-column align-items-stretch">
                                 <i class="fas fa-envelope"></i>
-                                <h4>Email Us</h4>
+                                <h4>Email</h4>
                                 <p>contact@example.com<br />info@example.com</p>
                             </div>
                             <div class="col-md-6 info d-flex flex-column align-items-stretch">
                                 <i class="fas fa-times-circle"></i>
-                                <h4>Working Hours</h4>
+                                <h4>Jam Kerja</h4>
                                 <p>Mon - Fri: 9AM to 5PM<br />Sunday: 9AM to 1PM</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-lg-6">
-                        <form action="forms/contact.php" method="post" role="form"
-                            class="php-email-form">
+                        <form action="{{ url('/kirim_pesan') }}" method="POST" role="form" class="php-email-form">
                             <div class="row">
                                 <div class="col-md-6 form-group">
-                                    <label for="name">Your Name</label>
-                                    <input type="text" name="name" class="form-control" id="name"
-                                        required />
+                                    <label for="nama">Nama</label>
+                                    <input type="text" name="nama" class="form-control" id="nama" required placeholder="Masukkan Nama Anda">
                                 </div>
                                 <div class="col-md-6 form-group mt-3 mt-md-0">
-                                    <label for="email">Your Email</label>
-                                    <input type="email" class="form-control" name="email" id="email"
-                                        required />
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" name="email" id="email" required placeholder="Masukkan E - Mail Anda">
                                 </div>
                             </div>
                             <div class="form-group mt-3">
-                                <label for="subject">Subject</label>
-                                <input type="text" class="form-control" name="subject" id="subject"
-                                    required />
+                                <label for="subjek">Subjek</label>
+                                <input type="text" class="form-control" name="subjek" id="subjek" required placeholder="Masukkan Subjek">
                             </div>
                             <div class="form-group mt-3">
-                                <label for="message">Message</label>
-                                <textarea class="form-control" name="message" rows="8" required></textarea>
+                                <label for="pesan">Pesan</label>
+                                <textarea class="form-control" name="pesan" rows="8" required placeholder="Masukkan Pesan"></textarea>
                             </div>
-                            <div class="my-3">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">
-                                    Your message has been sent. Thank you!
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit">Send Message</button>
+                            <div class="text-center mt-3">
+                                <button type="submit" style="width: 100%; padding: 5px;">Kirim Pesan</button>
                             </div>
                         </form>
                     </div>
