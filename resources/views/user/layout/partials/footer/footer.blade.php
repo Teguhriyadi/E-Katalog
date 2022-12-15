@@ -6,27 +6,36 @@
                     <div class="single-footer about">
                         <div class="logo-footer">
                             <span class="logo">
-                                Loveable
+                                <img src="{{ url('/img/logo_loveable_new.png') }}" style = "width: 140px; height: 140px;">
                             </span>
+                        </div><div class="contact">
+                            <ul>
+                                <li>Komplek Nuansa Kebagusan 99, Jl. Kebagusan III</li>
+                                <li>RT.8/RW.6, Kel. Kebagusan, Ps. Minggu</li>
+                                <li>Kota Jakarta Selatan, DKI Jakarta</li>
+                                <li>12520</li>
+                                <li>loveable.redaksi@gmail.com</li>
+                                <li>021-78847081</li>
+                            </ul>
                         </div>
-                        <p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, magna
+                        <!--p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, magna
                             eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
-                            facilisis luctus, metus.</p>
-                        <p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456
-                                    789</a></span></p>
+                            facilisis luctus, metus.</p-->
+                        <!--p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456
+                                    789</a></span><p-->
                     </div>
                     <!-- End Single Widget -->
                 </div>
                 <div class="col-lg-2 col-md-6 col-12">
                     <!-- Single Widget -->
                     <div class="single-footer links">
-                        <h4>Information</h4>
+                        <h4>Informasi</h4>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Faq</a></li>
-                            <li><a href="#">Terms &amp; Conditions</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Tentang Kami</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Syarat dan Ketentuan</a></li>
+                            <li><a href="#">Hubungi Kami</a></li>
+                            <li><a href="#">Lacak Pesanan</a></li>
                         </ul>
                     </div>
                     <!-- End Single Widget -->
@@ -50,20 +59,14 @@
                     <div class="single-footer social">
                         <h4>Get In Touch</h4>
                         <!-- Single Widget -->
-                        <div class="contact">
-                            <ul>
-                                <li>NO. 342 - London Oxford Street.</li>
-                                <li>012 United Kingdom.</li>
-                                <li>info@indomarket.com</li>
-                                <li>+032 3456 7890</li>
-                            </ul>
-                        </div>
+                        
                         <!-- End Single Widget -->
+                        <h4>Ikuti Kami</h4>
                         <ul>
-                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                            <li><a href="#"><i class="ti-twitter"></i></a></li>
-                            <li><a href="#"><i class="ti-flickr"></i></a></li>
-                            <li><a href="#"><i class="ti-instagram"></i></a></li>
+                            <li><a href="//www.facebook.com/Loveable.redaksi/"><i class="fa fa-facebook"></i> Loveable.redaksi</a></li>
+                            <li><a href="//www.twitter.com/Loveableous/"><i class="fa fa-twitter"></i> Loveablelous</a></li>
+                            <li><a href="//www.instagram.com/loveable.redaksi/"><i class="fa fa-instagram"></i> loveable.redaksi</a></li>
+                            <li><a href="//www.youtube.com/@penerbitloveable1149/"><i class="fa fa-youtube"></i> Penerbit Loveable</a></li>
                         </ul>
                     </div>
                     <!-- End Single Widget -->
