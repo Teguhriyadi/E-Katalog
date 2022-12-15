@@ -3,7 +3,7 @@
         <a href="index.html" class="logo d-flex align-items-center">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <!-- <img src="assets/img/logo.png" alt=""> -->
-            <h1>StudioFoto<span>.</span></h1>
+            <h1>Loveable<span></span></h1>
         </a>
 
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
@@ -11,15 +11,6 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
-                <li class="dropdown">
-                    <a href="#"><span>Portfolio</span>
-                        <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                    <ul>
-                        <li><a href="portfolio-fotografi.html">Portfolio Fotografi</a></li>
-                        <li><a href="portfolio-videografi.html">Portfolio Videografi</a></li>
-                        <li><a href="portfolio-animasi.html">Portfolio Animasi</a></li>
-                    </ul>
-                </li>
                 <li class="dropdown">
                     <a href="#"><span>Price List</span>
                         <i class="bi bi-chevron-down dropdown-indicator"></i></a>
@@ -32,8 +23,12 @@
                 <li><a href="timeline.html">Booking Online</a></li>
                 <li><a href="#main">About Us</a></li>
 
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="register.html">Register</a></li>
+                <li>
+                    <a href="{{ url('/login') }}">Login</a>
+                </li>
+                <li>
+                    <a href="{{ url('/daftar') }}">Daftar</a>
+                </li>
                 <li class="dropdown">
                     <a href="#"><span>Akun</span>
                         <i class="bi bi-chevron-down dropdown-indicator"></i></a>

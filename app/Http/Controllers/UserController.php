@@ -6,6 +6,7 @@ use App\Models\Keranjang;
 use App\Models\KeranjangDetail;
 use App\Models\PaketPreorder;
 use App\Models\Pembelian;
+use App\Models\Web\Artikel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,6 +16,7 @@ class UserController extends Controller
     {
         $data = [
             "paket" => PaketPreorder::get(),
+            "artikel" => Artikel::orderBy("created_at", "DESC")->get()
         ];
 
         return view("user.layout.home", $data);

@@ -1,11 +1,9 @@
 <section id="contact" class="contact section-bg">
     <div class="container">
         <div class="section-title">
-            <h2>Contact</h2>
-            <h3>Get In Touch With <span>Us</span></h3>
+            <h2>Kontak</h2>
             <p>
-                Ut possimus qui ut temporibus culpa velit eveniet modi omnis est
-                adipisci expedita at voluptas atque vitae autem.
+                Ayo isi form ini untuk masukan terhadap artikel atau website kami ini agar kami bisa lebih berkembang
             </p>
         </div>
 

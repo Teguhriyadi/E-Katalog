@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <h3>About Us</h3>
+                    <h3>Loveable</h3>
                     <p>
                         Fotografi <br />
                         adalah seni untk<br />
