@@ -6,6 +6,7 @@ use App\Models\Keranjang;
 use App\Models\KeranjangDetail;
 use App\Models\PaketPreorder;
 use App\Models\Pembelian;
+use App\Models\Pengaturan\ProfilPerusahaan;
 use App\Models\Web\Artikel;
 use App\Models\Web\Carousel;
 use Illuminate\Http\Request;
@@ -18,7 +19,8 @@ class UserController extends Controller
         $data = [
             "paket" => PaketPreorder::get(),
             "artikel" => Artikel::orderBy("created_at", "DESC")->get(),
-            "carousel" => Carousel::orderBy("created_at", "DESC")->paginate(3)
+            "carousel" => Carousel::orderBy("created_at", "DESC")->paginate(3),
+            "kontak" => ProfilPerusahaan::first()
         ];
 
         return view("user.layout.home", $data);

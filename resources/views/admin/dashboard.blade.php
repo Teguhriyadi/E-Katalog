@@ -10,7 +10,7 @@
 
 @section('content')
 
-<div class="alert alert-success" role="alert">
+<div class="alert alert-warning" role="alert">
     <h4 class="alert-heading">Selamat Datang
         <strong>
             {{ Auth::user()->nama }}

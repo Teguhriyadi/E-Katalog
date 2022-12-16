@@ -15,17 +15,23 @@
                             <div class="col-md-6 info d-flex flex-column align-items-stretch">
                                 <i class="fas fa-location"></i>
                                 <h4>Alamat</h4>
-                                <p>A108 Adam Street,<br />New York, NY 535022</p>
+                                <p>
+                                    {{ $kontak->alamat }}
+                                </p>
                             </div>
                             <div class="col-md-6 info d-flex flex-column align-items-stretch">
                                 <i class="fas fa-phone"></i>
                                 <h4>Telepon</h4>
-                                <p>+1 5589 55488 55<br />+1 5589 22548 64</p>
+                                <p>
+                                    {{ $kontak->nomor_hp }}
+                                </p>
                             </div>
                             <div class="col-md-6 info d-flex flex-column align-items-stretch">
                                 <i class="fas fa-envelope"></i>
                                 <h4>Email</h4>
-                                <p>contact@example.com<br />info@example.com</p>
+                                <p>
+                                    {{ $kontak->email }}
+                                </p>
                             </div>
                             <div class="col-md-6 info d-flex flex-column align-items-stretch">
                                 <i class="fas fa-times-circle"></i>

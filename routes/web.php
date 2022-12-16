@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KatalogController;
 use App\Http\Controllers\Admin\Master\TagController;
 use App\Http\Controllers\Admin\PaketPreorderController;
+use App\Http\Controllers\Admin\Pengaturan\ProfilPerusahaanController;
 use App\Http\Controllers\Admin\Web\ArtikelController;
 use App\Http\Controllers\Admin\Web\CarouselController;
 use App\Http\Controllers\Autentikasi\AutentikasiController;
@@ -86,6 +87,10 @@ Route::group(["middleware" => ["cek_status"]], function() {
                 Route::resource("/editor", EditorController::class);
                 Route::resource("/penulis", PenulisController::class);
                 Route::resource("/administrator", AkunController::class);
+            });
+
+            Route::prefix("pengaturan")->group(function() {
+                Route::resource("profil_perusahaan", ProfilPerusahaanController::class);
             });
 
             Route::get("/paketpreorder/{id_gambar_paket}/delete", [PaketPreorderController::class, "hapus_gambar_paket"]);
