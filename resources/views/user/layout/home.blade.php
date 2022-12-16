@@ -16,7 +16,7 @@
                     <p data-aos="fade-up">
                         Apa Yang Kamu Cari ? Artikel atau Seputar Konten Tentang Kisah Remaja? Atau Kamu Sedang Mencari Referensi Buku ?
                     </p>
-                    <a data-aos="fade-up" data-aos-delay="200" href="#get-started" class="btn-get-started">
+                    <a data-aos="fade-up" data-aos-delay="200" href="#about" class="btn-get-started">
                         Dapatkan Disini
                     </a>
                 </div>
@@ -25,8 +25,20 @@
     </div>
 
     <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-        <div class="carousel-item active" style="background-image: url(assets/img/hero-carousel/2.jpeg)"></div>
-        <div class="carousel-item" style="background-image: url(assets/img/hero-carousel/1.jpeg)"></div>
+        @php
+            $no = 1;
+        @endphp
+        @foreach ($carousel as $item)
+            @if ($no == 1)
+            <div class="carousel-item active" style="background-image: url('{{ $item->foto }}')"></div>
+            @else
+            <div class="carousel-item" style="background-image: url('{{ $item->foto }}')"></div>
+            @endif
+            @php
+                ++$no;
+            @endphp
+
+        @endforeach
 
         <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
             <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
@@ -47,7 +59,7 @@
             </div>
 
             <div class="col-lg-7">
-                <h2>About Our Studio</h2>
+                <h2>Tentang Loveable</h2>
                 <div class="our-story">
                     <h3>Our Story</h3>
                     <p>

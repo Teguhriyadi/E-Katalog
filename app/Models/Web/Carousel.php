@@ -14,4 +14,8 @@ class Carousel extends Model
     protected $guarded = [''];
 
     public $primaryKey = "id_carousel";
+
+    protected $keyType = 'string';
+
+    public $incrementing = false;
 }

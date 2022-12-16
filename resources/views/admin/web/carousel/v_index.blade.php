@@ -54,25 +54,25 @@
                         </thead>
                         <tbody>
                             @php
-                                $no = 0
+                            $no = 0
                             @endphp
                             @foreach ($carousel as $item)
-                                <tr>
-                                    <td class="text-center">{{ ++$no }}.</td>
-                                    <td>{{ $item->judul_carousel }}</td>
-                                    <td>{{ $item->deskripsi }}</td>
-                                    <td class="text-center">
-                                        <img src="{{ $item->foto }}" class="img-fluid" style="width: 100px;">
-                                    </td>
-                                    <td class="text-center">
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalEdit-{{ $item->id_carousel }}">
-                                            <i class="fa fa-edit"></i> Edit
-                                        </button>
-                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalHapus-{{ $item->id_carousel }}">
-                                            <i class="fa fa-trash"></i> Hapus
-                                        </button>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td class="text-center">{{ ++$no }}.</td>
+                                <td>{{ $item->judul_carousel }}</td>
+                                <td>{{ $item->deskripsi }}</td>
+                                <td class="text-center">
+                                    <img src="{{ $item->foto }}" class="img-fluid" style="width: 100px;">
+                                </td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalEdit-{{ $item->id_carousel }}">
+                                        <i class="fa fa-edit"></i> Edit
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalHapus-{{ $item->id_carousel }}">
+                                        <i class="fa fa-trash"></i> Hapus
+                                    </button>
+                                </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -117,6 +117,89 @@
         </div>
     </div>
 </div>
+<!-- END -->
+
+<!-- Edit Data -->
+@foreach ($carousel as $item)
+<div class="modal fade" id="exampleModalEdit-{{ $item->id_carousel }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <i class="fa fa-edit"></i> Edit Data
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ url('/admin/web/carousel/' . $item->id_carousel) }}" method="POST" enctype="multipart/form-data">
+                @method("PUT")
+                @csrf
+                @php
+                $str = $item->foto;
+                $hasil = trim($str, url('/'));
+
+                $print = substr($hasil, 8);
+                @endphp
+                <input type="hidden" name="gambarLama" value="{{ $print }}">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="judul_carousel"> Judul </label>
+                        <input type="text" class="form-control" name="judul_carousel" id="judul_carousel" placeholder="Masukkan Judul" value="{{ $item->judul_carousel }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="deskripsi"> Deskripsi </label>
+                        <textarea name="deskripsi" class="form-control" id="deskripsi" rows="5" placeholder="Masukkan Deskripsi">{{ $item->deskripsi }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="foto"> Foto </label>
+                        <input type="file" class="form-control" name="foto" id="foto">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @include("admin.components.btn-edit")
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- END -->
+
+<!-- Hapus Data -->
+@foreach ($carousel as $item)
+<div class="modal fade" id="exampleModalHapus-{{ $item->id_carousel }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <i class="fa fa-trash"></i> Hapus Data
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ url('/admin/web/carousel/' . $item->id_carousel) }}" method="POST" enctype="multipart/form-data">
+                @method("DELETE")
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <p>
+                            Apakah Yakin Anda Ingin Menghapus Data
+                            <strong>
+                                {{ $item->judul_carousel }} ?
+                            </strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @include("admin.components.btn-hapus")
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
 <!-- END -->
 
 @endsection
