@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('penulis', function (Blueprint $table) {
             $table->string("id_penulis")->primary();
-            $table->integer("user_id");
+            $table->string("user_id", 100);
             $table->integer("nomer_telepon");
             $table->text("alamat");
             $table->timestamps();

@@ -68,3 +68,5 @@ Route::group(["middleware" => ["cek_status"]], function() {
 });
 
 require __DIR__ . '/landing-page.php';
+
+require __DIR__ . '/penulis.php';

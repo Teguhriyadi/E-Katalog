@@ -8,6 +8,7 @@ use Database\Seeders\Akun\UserSeeder;
 use Database\Seeders\Pengaturan\ProfilPerusahaanSeeder;
 use Database\Seeders\Web\ArtikelSeeder;
 use Database\Seeders\Web\CarouselSeeder;
+use Database\Seeders\Web\TagSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,5 +26,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ArtikelSeeder::class);
         $this->call(ProfilPerusahaanSeeder::class);
         $this->call(CarouselSeeder::class);
+        $this->call(TagSeeder::class);
     }
 }

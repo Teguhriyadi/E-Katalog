@@ -23,8 +23,6 @@
                         <li><a href="jasa.html">Price List Jasa Dokumentasi</a></li>
                     </ul>
                 </li>
-                <li><a href="timeline.html">Booking Online</a></li>
-                <li><a href="#main">About Us</a></li>
 
                 <li>
                     <a href="{{ url('/login') }}" class="{{ Request::segment(1) == "login" ? 'active' : '' }}">Login</a>
@@ -40,6 +38,11 @@
                         <li><a href="jasa-videografi.html">Log Out</a></li>
                     </ul>
                 </li>
+
+                <li>
+                    <a href="{{ url('/auth/penulis') }}">Login Penulis</a>
+                </li>
+
                 <li>
                     <span
                         class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">1</span>

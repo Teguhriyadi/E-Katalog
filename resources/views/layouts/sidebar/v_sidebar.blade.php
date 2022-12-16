@@ -19,7 +19,8 @@
         <a class="nav-link" href="{{ url('/admin/dashboard') }}">
         @elseif(Auth::user()->role == "editor")
         <a class="nav-link" href="{{ url('/editor/dashboard') }}">
-        @else
+        @elseif(Auth::user()->role == "penulis")
+        <a class="nav-link" href="{{ url('/penulis/dashboard') }}">
         @endif
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>

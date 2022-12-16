@@ -16,4 +16,9 @@ class DashboardController extends Controller
     {
         return view("editor.v_dashboard");
     }
+
+    public function dashboard_penulis()
+    {
+        return view("penulis.v_dashboard");
+    }
 }
