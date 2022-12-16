@@ -16,21 +16,21 @@ class CarouselSeeder extends Seeder
     public function run()
     {
         Carousel::create([
-            "id_carousel" => "CRS-" . date("YmdHis"),
+            "id_carousel" => "CRS-" . date("YmdHis") . "1",
             "judul_carousel" => "Lorem Ipsum",
             "deskripsi" => "lorem ipsum",
             "foto" => url('/img/kategori1.jpg')
         ]);
 
         Carousel::create([
-            "id_carousel" => "CRS-" . date("YmdHis"),
+            "id_carousel" => "CRS-" . date("YmdHis") . "2",
             "judul_carousel" => "Lorem Ipsum",
             "deskripsi" => "lorem ipsum",
             "foto" => url('/img/kat1.jpg')
         ]);
 
         Carousel::create([
-            "id_carousel" => "CRS-" . date("YmdHis"),
+            "id_carousel" => "CRS-" . date("YmdHis") . "3",
             "judul_carousel" => "Lorem Ipsum",
             "deskripsi" => "lorem ipsum",
             "foto" => url('/img/kat2.jpg')
