@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -59,8 +59,8 @@
                     <a class="collapse-item" href="{{ url('/admin/web/carousel') }}">
                         Carousel
                     </a>
-                    <a class="collapse-item" href="{{ url('/admin/master/katalog') }}">
-                        Katalog
+                    <a class="collapse-item" href="{{ url('/admin/web/artikel') }}">
+                        Artikel
                     </a>
                     <a class="collapse-item" href="{{ url('/admin/master/buku') }}">
                         Buku
@@ -102,19 +102,12 @@
     </div>
 </li>
 
-<!-- Nav Item - Tables -->
-<li class="nav-item">
-    <a class="nav-link" href="tables.html">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Tables</span></a>
-    </li>
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
 
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
-
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
+<!-- Sidebar Toggler (Sidebar) -->
+<div class="text-center d-none d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+</div>
 
 </ul>

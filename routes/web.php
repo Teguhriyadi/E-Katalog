@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\KatalogController;
 use App\Http\Controllers\Admin\Master\TagController;
 use App\Http\Controllers\Admin\PaketPreorderController;
+use App\Http\Controllers\Admin\Web\ArtikelController;
 use App\Http\Controllers\Admin\Web\CarouselController;
 use App\Http\Controllers\Autentikasi\AutentikasiController;
 use App\Http\Controllers\User\LoginController;
@@ -78,6 +79,7 @@ Route::group(["middleware" => ["cek_status"]], function() {
 
             Route::prefix("web")->group(function() {
                 Route::resource("carousel", CarouselController::class);
+                Route::resource("artikel", ArtikelController::class);
             });
 
             Route::prefix("users")->group(function() {
