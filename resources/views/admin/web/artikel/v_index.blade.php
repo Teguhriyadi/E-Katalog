@@ -31,9 +31,12 @@
     <div class="col-md-12">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">
+                <h6 class="m-0 font-weight-bold text-primary" style="display: inline">
                     Data @yield("title")
                 </h6>
+                <a href="{{ url('/admin/web/artikel/create') }}" class="btn btn-primary btn-sm float-right">
+                    <i class="fa fa-plus"></i> Tambah
+                </a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -44,6 +47,7 @@
                                 <th class="text-center">Slug</th>
                                 <th>Judul</th>
                                 <th class="text-center">Kategori</th>
+                                <th class="text-center">Dibuat Oleh</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -56,11 +60,12 @@
                                 <td class="text-center">{{ ++$no }}.</td>
                                 <td class="text-center">{{ $item->slug }}</td>
                                 <td>{{ $item->judul }}</td>
-                                <td class="text-center">Hamdan</td>
+                                <td class="text-center">{{ $item->katalog->nama_katalog }}</td>
+                                <td class="text-center">{{ $item->users->nama }}</td>
                                 <td class="text-center">
-                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModalEdit-{{ $item->id }}">
+                                    <a href="{{ url('/admin/web/artikel/'.$item->id.'/edit') }}" class="btn btn-warning btn-sm">
                                         <i class="fa fa-edit"></i> Edit
-                                    </button>
+                                    </a>
                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalHapus-{{ $item->id }}">
                                         <i class="fa fa-trash"></i> Hapus
                                     </button>
@@ -89,13 +94,13 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ url('/admin/master/tag/'.$item->id) }}" method="POST">
+            <form action="{{ url('/admin/web/artikel/'.$item->id) }}" method="POST">
                 @method("DELETE")
                 @csrf
                 <div class="modal-body">
                     <p>
                         Apakah Anda Yakin Untuk Menghapus Data
-                        <strong>{{ $item->nama }}</strong> ?
+                        <strong>{{ $item->judul }}</strong> ?
                     </p>
                 </div>
                 <div class="modal-footer">

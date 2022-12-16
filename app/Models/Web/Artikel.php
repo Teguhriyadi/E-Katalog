@@ -18,4 +18,9 @@ class Artikel extends Model
         return $this->belongsTo("App\Models\User", "users_id", "id_users");
     }
 
+    public function katalog()
+    {
+        return $this->belongsTo("App\Models\Katalog", "kategori_id", "id_katalog");
+    }
+
 }

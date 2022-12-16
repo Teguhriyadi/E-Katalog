@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("slug", 100);
             $table->string("judul", 150);
-            $table->integer("kategori_id");
+            $table->string("kategori_id", 50);
             $table->text("deskripsi");
             $table->string("foto");
             $table->string("users_id");
