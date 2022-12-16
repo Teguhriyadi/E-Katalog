@@ -1,17 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\Account\AkunController;
-use App\Http\Controllers\Admin\Account\EditorController;
-use App\Http\Controllers\Admin\Account\PenulisController;
-use App\Http\Controllers\Admin\BukuController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\KatalogController;
-use App\Http\Controllers\Admin\Master\TagController;
 use App\Http\Controllers\Admin\PaketPreorderController;
-use App\Http\Controllers\Admin\Pengaturan\ProfilPerusahaanController;
-use App\Http\Controllers\Admin\Web\ArtikelController;
-use App\Http\Controllers\Admin\Web\CarouselController;
 use App\Http\Controllers\Autentikasi\AutentikasiController;
+use App\Http\Controllers\Public\DashboardController;
 use App\Http\Controllers\User\LoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -68,41 +59,11 @@ Route::group(["middleware" => ["guest"]], function() {
 });
 
 Route::group(["middleware" => ["cek_status"]], function() {
-    Route::group(["middleware" => ["can:admin"]], function() {
-        Route::prefix("admin")->group(function() {
-            Route::get("/dashboard", [DashboardController::class, "index"]);
 
-            Route::prefix("master")->group(function() {
-                Route::resource("tag", TagController::class);
-                Route::resource("/katalog", KatalogController::class);
-                Route::resource("/buku", BukuController::class);
-            });
+    require __DIR__ . '/admin.php';
 
-            Route::prefix("web")->group(function() {
-                Route::resource("carousel", CarouselController::class);
-                Route::resource("artikel", ArtikelController::class);
-            });
+    require __DIR__ . '/editor.php';
 
-            Route::prefix("users")->group(function() {
-                Route::resource("/editor", EditorController::class);
-                Route::resource("/penulis", PenulisController::class);
-                Route::resource("/administrator", AkunController::class);
-            });
-
-            Route::prefix("pengaturan")->group(function() {
-                Route::resource("profil_perusahaan", ProfilPerusahaanController::class);
-            });
-
-            Route::get("/paketpreorder/{id_gambar_paket}/delete", [PaketPreorderController::class, "hapus_gambar_paket"]);
-            Route::resource("/paketpreorder", PaketPreorderController::class);
-        });
-    });
-
-    Route::group(["middleware" => ["can:editor"]], function() {
-        Route::prefix("editor")->group(function() {
-            Route::get("/dashboard", [DashboardController::class, "dashboard_editor"]);
-        });
-    });
     Route::get("/logout", [AutentikasiController::class, "logout"]);
 });
 

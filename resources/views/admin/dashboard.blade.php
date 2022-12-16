@@ -15,6 +15,10 @@
         <strong>
             {{ Auth::user()->nama }}
         </strong>
+        Anda Login Sebagai
+        <strong>
+            {{ Auth::user()->role }}
+        </strong>
     </h4>
     <p>
         di <strong>Aplikasi Loveable.</strong>
