@@ -104,7 +104,7 @@
                         <ul class="mt-3">
                             @foreach ($katalog as $item)
                             <li>
-                                <a href="#">
+                                <a href="{{ url('/katalog/detail/' . $item->slug) }}">
                                     {{ $item->nama_katalog }} <span>(25)</span>
                                 </a>
                             </li>

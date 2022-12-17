@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\User\ArtikelController;
+use App\Http\Controllers\User\KatalogController;
 use App\Http\Controllers\User\LoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -11,4 +12,8 @@ Route::get("/daftar", [LoginController::class, "daftar"]);
 
 Route::prefix("blog")->group(function() {
     Route::get("/detail/{slug}", [ArtikelController::class, "detail"]);
+});
+
+Route::prefix("katalog")->group(function() {
+    Route::get("/detail/{slug}", [KatalogController::class, "detail"]);
 });

@@ -39,9 +39,19 @@
                     </ul>
                 </li>
 
+                @if (empty(Auth::user()->role))
                 <li>
-                    <a href="{{ url('/auth/penulis') }}">Login Penulis</a>
+                    <a href="{{ url('/auth/penulis/login') }}">Login Penulis</a>
                 </li>
+                @elseif(Auth::user()->role == "penulis")
+                <li>
+                    <a href="{{ url('/penulis/dashboard') }}">Dashboard Penulis</a>
+                </li>
+                @else
+                <li>
+                    <a href="{{ url('/auth/penulis/login') }}">Login Penulis</a>
+                </li>
+                @endif
 
                 <li>
                     <span
