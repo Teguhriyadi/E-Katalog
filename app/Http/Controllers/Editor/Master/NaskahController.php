@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Editor\Master;
 use App\Http\Controllers\Controller;
 use App\Models\Dokumen\Naskah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 use PDF;
 
@@ -35,5 +36,15 @@ class NaskahController extends Controller
         );
 
         return Response::download($file, "Naskah " . $nama . ".pdf", $headers);
+    }
+
+    public function update(Request $request, $id)
+    {
+        Naskah::where("id_naskah", $id)->update([
+            "status_naskah" => $request->ubah_status,
+            "editor_id" => Auth::user()->editor->id_editor
+        ]);
+
+        return back()->with('message', 'Data Naskah Berhasil Diubah!');
     }
 }

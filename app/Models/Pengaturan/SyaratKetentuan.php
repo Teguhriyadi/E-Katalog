@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Models\Akun;
+namespace App\Models\Pengaturan;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Editor extends Model
+class SyaratKetentuan extends Model
 {
     use HasFactory;
 
-    protected $table = "editor";
+    protected $table = "syarat_ketentuan";
 
     protected $guarded = [''];
 
-    public $primaryKey = "id_editor";
+    protected $primaryKey = "id_syarat_ketentuan";
 
     protected $keyType = 'string';
 

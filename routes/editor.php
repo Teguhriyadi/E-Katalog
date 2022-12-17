@@ -10,6 +10,7 @@ Route::group(["middleware" => ["can:editor"]], function() {
         Route::prefix("master")->group(function() {
             Route::get("/naskah", [NaskahController::class, "index"]);
             Route::get("/naskah/{id}/download", [NaskahController::class, "download"]);
+            Route::put("/naskah/{id}", [NaskahController::class, "update"]);
         });
     });
 });

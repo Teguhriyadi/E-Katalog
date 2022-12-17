@@ -84,6 +84,9 @@
                         <a class="collapse-item" href="{{ url('/admin/pengaturan/profil_perusahaan') }}">
                             Profil Perusahaan
                         </a>
+                        <a class="collapse-item" href="{{ url('/admin/pengaturan/syarat_ketentuan') }}">
+                            Syarat Ketentuan
+                        </a>
                     </div>
                 </div>
             </li>

@@ -38,7 +38,7 @@ class NaskahController extends Controller
             "file_naskah" => url('/storage/' . $data),
         ]);
 
-        return redirect("/penulis/master/naskah")->with('message', 'Data Artikel Berhasil Ditambahkan!');;
+        return redirect("/penulis/master/naskah")->with('message', 'Data Artikel Berhasil Ditambahkan!');
     }
 
     public function edit($id_naskah)

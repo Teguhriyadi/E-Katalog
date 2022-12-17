@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\BukuController;
 use App\Http\Controllers\Admin\KatalogController;
 use App\Http\Controllers\Admin\Master\TagController;
 use App\Http\Controllers\Admin\Pengaturan\ProfilPerusahaanController;
+use App\Http\Controllers\Admin\Pengaturan\SyaratKetentuanController;
 use App\Http\Controllers\Admin\Web\ArtikelController;
 use App\Http\Controllers\Admin\Web\CarouselController;
 use App\Http\Controllers\Public\DashboardController;
@@ -35,6 +36,7 @@ Route::group(["middleware" => ["can:admin"]], function() {
 
         Route::prefix("pengaturan")->group(function() {
             Route::resource("profil_perusahaan", ProfilPerusahaanController::class);
+            Route::resource("syarat_ketentuan", SyaratKetentuanController::class);
         });
 
         Route::get("/paketpreorder/{id_gambar_paket}/delete", [PaketPreorderController::class, "hapus_gambar_paket"]);
