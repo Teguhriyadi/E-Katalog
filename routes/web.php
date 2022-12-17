@@ -66,7 +66,7 @@ Route::group(["middleware" => ["cek_status"]], function() {
 
     Route::get("/logout", [AutentikasiController::class, "logout"]);
 });
+require __DIR__ . '/penulis.php';
 
 require __DIR__ . '/landing-page.php';
 
-require __DIR__ . '/penulis.php';

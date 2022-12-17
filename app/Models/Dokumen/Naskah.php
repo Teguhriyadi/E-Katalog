@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Dokumen;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Penulis extends Model
+class Naskah extends Model
 {
     use HasFactory;
 
-    protected $table = "penulis";
+    protected $table = "naskah";
 
     protected $guarded = [''];
 
-    public $primaryKey = "id_penulis";
+    public $primaryKey = "id_naskah";
 
     protected $keyType = 'string';
 

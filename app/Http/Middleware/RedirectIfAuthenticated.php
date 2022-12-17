@@ -25,7 +25,7 @@ class RedirectIfAuthenticated
             } else if (Auth::user()->role == "editor") {
                 return redirect('/editor/dashboard');
             } else if (Auth::user()->role == "penulis") {
-                return redirect('/mahasiswa/dashboard');
+                return redirect('/penulis/dashboard');
             } else if (Auth::user()->role == "customer") {
                 return redirect("/dosen/dashboard");
             }

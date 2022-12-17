@@ -55,4 +55,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo("App\Models\Akun\Editor", "id_users", "user_id");
     }
+
+    public function penulis()
+    {
+        return $this->belongsTo("App\Models\Penulis", "id_users", "user_id");
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Penulis\Auth\LoginController;
+use App\Http\Controllers\Penulis\Dokumen\NaskahController;
 use App\Http\Controllers\Public\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,4 +14,8 @@ Route::prefix("auth/penulis")->group(function() {
 
 Route::prefix("penulis")->group(function() {
     Route::get("/dashboard", [DashboardController::class, "dashboard_penulis"]);
+
+    Route::prefix("master")->group(function() {
+        Route::resource("naskah", NaskahController::class);
+    });
 });
