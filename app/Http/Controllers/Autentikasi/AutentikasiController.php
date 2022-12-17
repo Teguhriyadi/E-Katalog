@@ -54,9 +54,15 @@ class AutentikasiController extends Controller
 
     public function logout()
     {
-        Auth::logout();
+        if (Auth::user()->role == "penulis") {
+            Auth::logout();
 
-        return redirect("/auth");
+            return redirect("/auth/penulis/login");
+        } else {
+            Auth::logout();
+
+            return redirect("/auth");
+        }
     }
 
     public function register()

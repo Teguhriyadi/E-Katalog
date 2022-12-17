@@ -89,6 +89,14 @@
             </li>
             @endcan
 
+            @can("editor")
+            <li class="nav-item">
+                <a href="{{ url('/editor/master/naskah') }}" class="nav-link">
+                    <i class="fa fa-book"></i> Naskah Penulis
+                </a>
+            </li>
+            @endcan
+
             @can("penulis")
             <li class="nav-item {{ Request::is("penulis/master/naskah") ? 'active' : '' }}">
                 <a href="{{ url('/penulis/master/naskah') }}" class="nav-link">

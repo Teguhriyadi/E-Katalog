@@ -18,4 +18,9 @@ class Naskah extends Model
     protected $keyType = 'string';
 
     public $incrementing = false;
+
+    public function penulis()
+    {
+        return $this->belongsTo("App\Models\Penulis", "penulis_id", "id_penulis");
+    }
 }
