@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pengaturan\SyaratKetentuan;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -19,6 +20,8 @@ class DashboardController extends Controller
 
     public function dashboard_penulis()
     {
-        return view("penulis.v_dashboard");
+        $data["syarat_ketentuan"] = SyaratKetentuan::first();
+
+        return view("penulis.v_dashboard", $data);
     }
 }
