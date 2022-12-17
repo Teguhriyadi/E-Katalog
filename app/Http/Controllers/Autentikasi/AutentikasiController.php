@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Autentikasi;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterAkunFormRequest;
+use App\Models\Pengaturan\ProfilPerusahaan;
 use App\Models\Penulis;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,7 +15,9 @@ class AutentikasiController extends Controller
 {
     public function login()
     {
-        return view("autentikasi.login");
+        $data["kontak"] = ProfilPerusahaan::first();
+
+        return view("autentikasi.login", $data);
     }
 
     public function post_login(Request $request)
@@ -58,7 +61,9 @@ class AutentikasiController extends Controller
 
     public function register()
     {
-        return view("autentikasi.register");
+        $data["kontak"] = ProfilPerusahaan::first();
+
+        return view("autentikasi.register", $data);
     }
 
     public function post_register(RegisterAkunFormRequest $request)

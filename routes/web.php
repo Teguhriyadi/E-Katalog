@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get("/login", [LoginController::class, "login"]);
-Route::post("/login", [LoginController::class, "post_login"]);
+//Route::get("/login", [LoginController::class, "login"]);
+//Route::post("/login", [LoginController::class, "post_login"]);
 Route::get("/register", [LoginController::class, "register"]);
 Route::post("/register", [LoginController::class, "post_register"]);
 
