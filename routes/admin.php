@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\Account\AkunController;
 use App\Http\Controllers\Admin\Account\EditorController;
 use App\Http\Controllers\Admin\Account\PenulisController;
+use App\Http\Controllers\Admin\Account\ProfilSayaController;
 use App\Http\Controllers\Admin\BukuController;
 use App\Http\Controllers\Admin\KatalogController;
 use App\Http\Controllers\Admin\Master\TagController;
@@ -34,6 +35,8 @@ Route::group(["middleware" => ["can:admin"]], function() {
             Route::resource("/editor", EditorController::class);
             Route::resource("/penulis", PenulisController::class);
             Route::resource("/administrator", AkunController::class);
+            Route::resource("/update_profil", ProfilSayaController::class);
+            Route::put("/ubah_password", [ProfilSayaController::class, "ubah_password"]);
         });
 
         Route::prefix("pengaturan")->group(function() {

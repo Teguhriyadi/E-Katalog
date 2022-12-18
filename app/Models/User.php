@@ -46,6 +46,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $keyType = 'string';
+
+    public $incrementing = false;
+
     public function customer()
     {
         return $this->belongsTo("App\Models\Customer", "id_users", "user_id");
