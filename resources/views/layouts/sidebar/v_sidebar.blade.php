@@ -69,7 +69,9 @@
                         <a class="collapse-item" href="{{ url('/admin/web/artikel') }}">
                             Artikel
                         </a>
-
+                        <a class="collapse-item" href="{{ url('/admin/web/pesan') }}">
+                            Pesan
+                        </a>
                     </div>
                 </div>
             </li>

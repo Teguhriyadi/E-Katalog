@@ -42,27 +42,32 @@
                     </div>
 
                     <div class="col-lg-6">
-                        <form action="{{ url('/kirim_pesan') }}" method="POST" role="form" class="php-email-form">
+                        <form action="{{ url('/kirim_pesan') }}" method="POST" class="info">
+                            @csrf
                             <div class="row">
-                                <div class="col-md-6 form-group">
-                                    <label for="nama">Nama</label>
-                                    <input type="text" name="nama" class="form-control" id="nama" required placeholder="Masukkan Nama Anda">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="nama" class="form-label" style="float: left;">Nama</label>
+                                        <input type="text" name="nama" class="form-control" id="nama" required placeholder="Masukkan Nama">
+                                    </div>
                                 </div>
-                                <div class="col-md-6 form-group mt-3 mt-md-0">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" name="email" id="email" required placeholder="Masukkan E - Mail Anda">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email" class="form-label" style="float: left;"> Email </label>
+                                        <input type="email" class="form-control" name="email" id="email" required placeholder="Masukkan E - Mail">
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group mt-3">
-                                <label for="subjek">Subjek</label>
+                                <label for="subjek" class="form-label" style="float: left">Subjek</label>
                                 <input type="text" class="form-control" name="subjek" id="subjek" required placeholder="Masukkan Subjek">
                             </div>
                             <div class="form-group mt-3">
-                                <label for="pesan">Pesan</label>
+                                <label for="pesan" class="form-label" style="float: left;">Pesan</label>
                                 <textarea class="form-control" name="pesan" rows="8" required placeholder="Masukkan Pesan"></textarea>
                             </div>
                             <div class="text-center mt-3">
-                                <button type="submit" style="width: 100%; padding: 5px;">Kirim Pesan</button>
+                                <button type="submit" class="btn btn-primary btn-block" style="width: 100%; padding: 5px;">Kirim Pesan</button>
                             </div>
                         </form>
                     </div>

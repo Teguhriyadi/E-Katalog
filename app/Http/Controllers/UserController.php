@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Keranjang;
 use App\Models\KeranjangDetail;
+use App\Models\Master\Pesan;
 use App\Models\PaketPreorder;
 use App\Models\Pembelian;
 use App\Models\Pengaturan\ProfilPerusahaan;
@@ -24,6 +25,19 @@ class UserController extends Controller
         ];
 
         return view("user.layout.home", $data);
+    }
+
+    public function kirim_pesan(Request $request)
+    {
+        Pesan::create([
+            "id_pesan" => "PSN-" . date("YmdHis"),
+            "nama" => $request->nama,
+            "email" => $request->email,
+            "subjek" => $request->subjek,
+            "pesan" => $request->pesan
+        ]);
+
+        return back();
     }
 
     public function beli(Request $request, $id_paket)

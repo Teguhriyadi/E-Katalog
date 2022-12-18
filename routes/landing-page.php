@@ -17,3 +17,5 @@ Route::prefix("blog")->group(function() {
 Route::prefix("katalog")->group(function() {
     Route::get("/detail/{slug}", [KatalogController::class, "detail"]);
 });
+
+Route::post("kirim_pesan", [UserController::class, "kirim_pesan"]);

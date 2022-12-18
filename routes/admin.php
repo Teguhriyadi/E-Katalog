@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Pengaturan\ProfilPerusahaanController;
 use App\Http\Controllers\Admin\Pengaturan\SyaratKetentuanController;
 use App\Http\Controllers\Admin\Web\ArtikelController;
 use App\Http\Controllers\Admin\Web\CarouselController;
+use App\Http\Controllers\Admin\Web\PesanController;
 use App\Http\Controllers\Public\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,7 @@ Route::group(["middleware" => ["can:admin"]], function() {
         Route::prefix("web")->group(function() {
             Route::resource("carousel", CarouselController::class);
             Route::resource("artikel", ArtikelController::class);
+            Route::resource("pesan", PesanController::class);
         });
 
         Route::prefix("users")->group(function() {
