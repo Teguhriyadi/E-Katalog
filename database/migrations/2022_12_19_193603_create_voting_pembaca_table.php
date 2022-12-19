@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("judul_voting", 100);
             $table->string("url_voting");
             $table->text("sinopsis");
+            $table->string("id_penulis", 50);
             $table->string("id_editor", 50);
             $table->timestamps();
         });

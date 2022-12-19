@@ -15,58 +15,62 @@ use PDO;
 
 class PaketPreorderController extends Controller
 {
-    //main page paket preorder
-    public function index(){
+    public function index()
+    {
         $paketpreorder = PaketPreorder::all();
-        return view('admin.paketpreorder.index', compact('paketpreorder'));
+
+        return view("admin.master.paketpreorder.index", compact('paketpreorder'));
     }
 
-    //input data
-    public function create(){
-
-        $katalogs = Katalog::all();
+    public function create()
+    {
+        $katalog = Katalog::all();
         $listbuku = Buku::all();
-        return view('admin.paketpreorder.create', compact('katalogs', 'listbuku'));
+
+        return view("admin.master.paketpreorder.create", compact('katalog', 'listbuku'));
     }
 
-    public function store(PaketPreorderFormRequest $request){
-        $validatedData = $request->validated();
+    public function store(Request $request)
+    {
+        if ($request->file("cover_paket")) {
+            $data = $request->file("cover_paket")->store("cover_paket");
+        }
 
-        $katalog = Katalog::findOrFail($validatedData['idkatalog']);
-        $paket = $katalog->paketpreorder()->create([
-            'id_paket'      => $validatedData['id_paket'],
-            'idkatalog'     => $validatedData['idkatalog'],
-            'idbuku'        => $validatedData['idbuku'],
-            'nama_paket'    => $validatedData['nama_paket'],
-            'harga_paket'   => $validatedData['harga_paket'],
-            'qty_paket'     => $validatedData['qty_paket'],
-            'desc_paket'    => $validatedData['desc_paket'],
-            'slug'          => Str::slug($validatedData["nama_paket"]), //rada error tadi
-            'tanggal'  => $request->tanggal,
-            'batas' => $request->batas
+        $paket = PaketPreorder::create([
+            "id_paket" => "PKT-" . date("YmdHis"),
+            "idkatalog" => $request->idkatalog,
+            "idbuku" => $request->idbuku,
+            "cover_paket" => url("/storage/".$data),
+            "nama_paket" => $request->nama_paket,
+            "harga_paket" => $request->harga_paket,
+            "qty_paket" => $request->qty_paket,
+            "desc_paket" => $request->desc_paket,
+            "slug" => Str::slug($request->nama_paket),
+            "tanggal" => $request->tanggal,
+            "batas" => $request->batas
         ]);
 
         if($request->hasFile('cover_paket')){
-            $uploadPath = 'uploads/paketpreorder/'; //tmpt simpen gambar paket
+            $uploadPath = 'uploads/paketpreorder/';
 
-            $i = 1; //ini ttp dipake kak walau udh ada yg $gambar_paket +=1?
+            $i = 1;
             $gambar_paket = date("YmdHis");
-            foreach($request->file('cover_paket') as $imageFile){
+            foreach($request->file('cover_paket_gambar') as $imageFile){
                 $gambar_paket += 1;
                 $ext            = $imageFile->getClientOriginalExtension();
-                $filename       = time().$i++.'.'.$ext; //yg ini $i nya diganti jd $gambar_paket ga ka kalo yg $i ga dipake
+                $filename       = time().$i++.'.'.$ext;
                 $imageFile->move($uploadPath, $filename);
                 $finalImagePathName = $filename;
 
 
                 $paket->gambarPaket()->create([
                     'id_gambar_paket' => $gambar_paket,
-                    'idpaket' => $paket->id_paket, //idpaket dari GambarPaket
+                    'idpaket' => $paket->id_paket,
                     'cover_paket' => $finalImagePathName
                 ]);
             }
         }
-        return redirect ('/admin/paketpreorder')->with('message', 'Data paket pre-order berhasil ditambahkan!');
+        return redirect ('/admin/master/paket')->with('message', 'Data paket pre-order berhasil ditambahkan!');
     }
 
     public function edit (string $id_paket){

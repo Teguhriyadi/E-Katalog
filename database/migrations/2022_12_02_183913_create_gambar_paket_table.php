@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('gambar_paket', function (Blueprint $table) {
             $table->string('id_gambar_paket')->primary();
-            $table->string('idpaket', 6)->nullable();
+            $table->string('idpaket')->nullable();
             $table->string('cover_paket')->nullable();
 
             $table->timestamps();

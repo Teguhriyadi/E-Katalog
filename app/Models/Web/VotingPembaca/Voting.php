@@ -1,24 +1,21 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Web\VotingPembaca;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GambarPaket extends Model
-
+class Voting extends Model
 {
     use HasFactory;
 
-    protected $table = 'gambar_paket';
+    protected $table = "voting_pembaca";
 
     protected $guarded = [''];
 
-    protected $primaryKey = 'id_gambar_paket';
+    protected $primaryKey = "id_voting_pembaca";
 
     protected $keyType = 'string';
 
     public $incrementing = false;
-
-    public $timestamps = false;
 }

@@ -14,19 +14,7 @@ class PaketPreorder extends Model
 
     protected $table = 'paket_preorder';
 
-    protected $fillable = [
-            'id_paket',
-            'idkatalog',
-            'idbuku',
-            'cover_paket',
-            'nama_paket',
-            'harga_paket',
-            'qty_paket',
-            'desc_paket',
-            'slug',
-            'tanggal',
-            'batas'
-    ];
+    protected $guarded = [''];
 
     protected $primaryKey = 'id_paket';
 
@@ -36,7 +24,8 @@ class PaketPreorder extends Model
 
     public $timestamps = false;
 
-    public function katalog(){
+    public function katalog()
+    {
         return $this->belongsTo(Katalog::class, 'idkatalog', 'id_katalog');
     }
 

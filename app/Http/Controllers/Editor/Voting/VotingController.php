@@ -14,6 +14,6 @@ class VotingController extends Controller
 
     public function create()
     {
-        echo "ada";
+        return view("editor.voting.v_create");
     }
 }

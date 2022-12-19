@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Account\ProfilSayaController;
 use App\Http\Controllers\Admin\BukuController;
 use App\Http\Controllers\Admin\KatalogController;
 use App\Http\Controllers\Admin\Master\TagController;
+use App\Http\Controllers\Admin\PaketPreorderController;
 use App\Http\Controllers\Admin\Pengaturan\ProfilPerusahaanController;
 use App\Http\Controllers\Admin\Pengaturan\SyaratKetentuanController;
 use App\Http\Controllers\Admin\Web\ArtikelController;
@@ -23,6 +24,7 @@ Route::group(["middleware" => ["can:admin"]], function() {
             Route::resource("tag", TagController::class);
             Route::resource("/katalog", KatalogController::class);
             Route::resource("/buku", BukuController::class);
+            Route::resource("/paket", PaketPreorderController::class);
         });
 
         Route::prefix("web")->group(function() {

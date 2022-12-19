@@ -52,6 +52,9 @@
                         <a class="collapse-item {{ Request::segment(3) == "buku" ? "active" : "" }}" href="{{ url('/admin/master/buku') }}">
                             Buku
                         </a>
+                        <a class="collapse-item {{ Request::segment(3) == "paket" ? "active" : "" }} " href="{{ url('/admin/master/paket') }}">
+                            Paket
+                        </a>
                     </div>
                 </div>
             </li>
