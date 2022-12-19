@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Editor\Account\ProfilController;
 use App\Http\Controllers\Editor\Master\NaskahController;
 use App\Http\Controllers\Public\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -13,7 +14,8 @@ Route::group(["middleware" => ["can:editor"]], function() {
             Route::put("/naskah/{id}", [NaskahController::class, "update"]);
         });
         Route::prefix("users")->group(function() {
-            Route::get("/update_profil", [ProfilController::class, "update_profil"]);
+            Route::resource("/update_profil", ProfilController::class);
+            Route::put("/ubah_password", [ProfilController::class, "ubah_password"]);
         });
     });
 });

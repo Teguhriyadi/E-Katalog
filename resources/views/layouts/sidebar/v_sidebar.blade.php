@@ -95,7 +95,7 @@
             @endcan
 
             @can("editor")
-            <li class="nav-item">
+            <li class="nav-item {{ Request::segment("3") == "naskah" ? "active" : "" }} ">
                 <a href="{{ url('/editor/master/naskah') }}" class="nav-link">
                     <i class="fa fa-book"></i> Naskah Penulis
                 </a>
