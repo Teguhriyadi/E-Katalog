@@ -12,5 +12,8 @@ Route::group(["middleware" => ["can:editor"]], function() {
             Route::get("/naskah/{id}/download", [NaskahController::class, "download"]);
             Route::put("/naskah/{id}", [NaskahController::class, "update"]);
         });
+        Route::prefix("users")->group(function() {
+            Route::get("/update_profil", [ProfilController::class, "update_profil"]);
+        });
     });
 });

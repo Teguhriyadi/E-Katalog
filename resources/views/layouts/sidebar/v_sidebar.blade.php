@@ -150,7 +150,9 @@
                 @if (Auth::user()->role == "admin")
                 <a class="collapse-item {{ Request::segment(3) == "update_profil" ? "active" : "" }}" href="{{ url('/admin/users/update_profil') }}">Profil Saya</a>
                 @elseif(Auth::user()->role == "editor")
-                <a class="collapse-item" href="{{ url('/editor/users/profil_saya') }}">Profil Saya</a>
+                <a class="collapse-item {{ Request::segment(3) == "update_profil" ? "active" : "" }}" href="{{ url('/editor/users/update_profil') }}">Profil Saya</a>
+                @elseif(Auth::user()->role == "penulis")
+                <a class="collapse-item {{ Request::segment(3) == "update_profil" ? "active" : "" }}" href="{{ url('/penulis/users/update_profil') }}">Profil Saya</a>
                 @endif
             </div>
         </div>
