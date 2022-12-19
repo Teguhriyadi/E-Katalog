@@ -17,6 +17,17 @@
 @section('content')
 
 <div class="row">
+    @if (count($errors) > 0)
+    <div class="col-md-12">
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+    @endif
     <!-- Menampilkan Pesan -->
     <div class="col-md-12">
         @if(session('message'))
@@ -40,7 +51,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="nama"> Nama </label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama">
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" value="{{ old('nama') }}">
                     </div>
                 </div>
                 <div class="card-footer">
@@ -116,8 +127,8 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="nama"> Hamdan </label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" value="{{ $item->nama }}">
+                        <label for="nama"> Nama </label>
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukkan Nama" value="{{ old('nama') ?? $item->nama }}">
                     </div>
                 </div>
                 <div class="modal-footer">

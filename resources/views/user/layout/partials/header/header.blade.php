@@ -25,6 +25,12 @@
                 </li>
 
                 <li>
+                    <a href="{{ url('/voting/pilihan') }}">
+                        Voting Pembaca
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ url('/login') }}" class="{{ Request::segment(1) == "login" ? 'active' : '' }}">Login</a>
                 </li>
                 <li>

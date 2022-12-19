@@ -54,8 +54,8 @@
                                 <label for="status_buku"> Status Buku </label>
                                 <select name="status_buku" class="form-control" id="status_buku">
                                     <option value="">- Pilih -</option>
-                                    <option value="1" {{ $buku->status == 1 ? 'selected' : '' }}>- Tersedia -</option>
-                                    <option value="0" {{ $buku->status == 0 ? 'selected' : '' }}>- Tidak Tersedia -</option>
+                                    <option value="1" {{ old('status_buku', $buku->status_buku) == '1' ? 'selected' : '' }} >- Tersedia -</option>
+                                    <option value="0" {{ old('status_buku', $buku->status_buku) == '0' ? 'selected' : '' }} >- Tidak Tersedia -</option>
                                 </select>
                             </div>
                         </div>
@@ -64,13 +64,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="judul_buku"> Judul Buku </label>
-                                <input type="text" class="form-control" name="judul_buku" id="judul_buku" placeholder="Masukkan Judul Buku" value="{{ $buku->judul_buku }}">
+                                <input type="text" class="form-control" name="judul_buku" id="judul_buku" placeholder="Masukkan Judul Buku" value="{{ old("judul_buku") ?? $buku->judul_buku }}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nama_penulis"> Nama Penulis </label>
-                                <input type="text" class="form-control" name="nama_penulis" id="nama_penulis" placeholder="Masukkan Nama Penulis" value="{{ $buku->nama_penulis }}">
+                                <input type="text" class="form-control" name="nama_penulis" id="nama_penulis" placeholder="Masukkan Nama Penulis" value="{{ old("nama_penulis") ?? $buku->nama_penulis }}">
                             </div>
                         </div>
                     </div>
@@ -78,19 +78,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="tgl_terbit"> Tanggal Terbit </label>
-                                <input type="date" class="form-control" name="tgl_terbit" id="tgl_terbit" value="{{ $buku->tgl_terbit }}">
+                                <input type="date" class="form-control" name="tgl_terbit" id="tgl_terbit" value="{{ old("tgl_terbit") ?? $buku->tgl_terbit }}">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="halaman"> Halaman </label>
-                                <input type="number" class="form-control" name="halaman" id="halaman" placeholder="Masukkan Jumlah Halaman" min="1" value="{{ $buku->halaman }}">
+                                <input type="number" class="form-control" name="halaman" id="halaman" placeholder="Masukkan Jumlah Halaman" min="1" value="{{ old("halaman") ?? $buku->halaman }}">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="ukuran"> Ukuran </label>
-                                <input type="text" class="form-control" name="ukuran" id="ukuran" placeholder="Masukkan Ukuran Buku" value="{{ $buku->ukuran }}">
+                                <input type="text" class="form-control" name="ukuran" id="ukuran" placeholder="Masukkan Ukuran Buku" value="{{ old("ukuran") ?? $buku->ukuran }}">
                             </div>
                         </div>
                     </div>
@@ -103,19 +103,26 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="isbn"> ISBN </label>
-                                <input type="text" class="form-control" name="isbn" id="isbn" placeholder="Masukkan ISBN" value="{{ $buku->isbn }}">
+                                <input type="text" class="form-control" name="isbn" id="isbn" placeholder="Masukkan ISBN" value="{{ old("isbn") ?? $buku->isbn }}">
                             </div>
                         </div>
                         <div class="col-md-8">
                             <div class="form-group">
-                                <label for="cover_buku"> Cover Buku </label>
+                                <label for="cover_buku">
+                                    Cover Buku
+                                    <small>
+                                        <span class="text-danger">
+                                            <i>(Extensi : JPG, PNG) | MAX : (2048)</i>
+                                        </span>
+                                    </small>
+                                </label>
                                 <input type="file" class="form-control" name="cover_buku" id="cover_buku">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="keterangan"> Keterangan </label>
-                        <textarea name="keterangan_buku" id="keterangan_buku" class="form-control" rows="5" placeholder="Masukkkan Keterangan Buku">{{ $buku->keterangan_buku }}</textarea>
+                        <textarea name="keterangan_buku" id="keterangan_buku" class="form-control" rows="5" placeholder="Masukkkan Keterangan Buku">{{ old("keterangan_buku") ?? $buku->keterangan_buku }}</textarea>
                     </div>
                 </div>
                 <div class="card-footer">

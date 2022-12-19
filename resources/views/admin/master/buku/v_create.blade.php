@@ -15,6 +15,17 @@
 @section('content')
 
 <div class="row">
+    @if (count($errors) > 0)
+    <div class="col-md-12">
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+    @endif
     <!-- Menampilkan Pesan -->
     <div class="col-md-12">
         @if(session('message'))
@@ -45,7 +56,7 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label for="id_buku"> ID Buku </label>
-                                <input type="text" class="form-control" name="id_buku" id="id_buku" placeholder="Masukkan ID Buku">
+                                <input type="text" class="form-control" name="id_buku" id="id_buku" placeholder="Masukkan ID Buku" value="{{ old('id_buku') }}">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -63,13 +74,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="judul_buku"> Judul Buku </label>
-                                <input type="text" class="form-control" name="judul_buku" id="judul_buku" placeholder="Masukkan Judul Buku">
+                                <input type="text" class="form-control" name="judul_buku" id="judul_buku" placeholder="Masukkan Judul Buku" value="{{ old('judul_buku') }}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nama_penulis"> Nama Penulis </label>
-                                <input type="text" class="form-control" name="nama_penulis" id="nama_penulis" placeholder="Masukkan Nama Penulis">
+                                <input type="text" class="form-control" name="nama_penulis" id="nama_penulis" placeholder="Masukkan Nama Penulis" value="{{ old("nama_penulis") }}">
                             </div>
                         </div>
                     </div>
@@ -77,19 +88,19 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="tgl_terbit"> Tanggal Terbit </label>
-                                <input type="date" class="form-control" name="tgl_terbit" id="tgl_terbit">
+                                <input type="date" class="form-control" name="tgl_terbit" id="tgl_terbit" value="{{ old("tgl_terbit") }}">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="halaman"> Halaman </label>
-                                <input type="number" class="form-control" name="halaman" id="halaman" placeholder="Masukkan Jumlah Halaman" min="1">
+                                <input type="number" class="form-control" name="halaman" id="halaman" placeholder="Masukkan Jumlah Halaman" value="{{ old("halaman") }}">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="ukuran"> Ukuran </label>
-                                <input type="text" class="form-control" name="ukuran" id="ukuran" placeholder="Masukkan Ukuran Buku">
+                                <input type="text" class="form-control" name="ukuran" id="ukuran" placeholder="Masukkan Ukuran Buku" value="{{ old("ukuran") }}">
                             </div>
                         </div>
                     </div>
@@ -97,19 +108,26 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="isbn"> ISBN </label>
-                                <input type="text" class="form-control" name="isbn" id="isbn" placeholder="Masukkan ISBN">
+                                <input type="text" class="form-control" name="isbn" id="isbn" placeholder="Masukkan ISBN" value="{{ old("isbn") }}">
                             </div>
                         </div>
                         <div class="col-md-8">
                             <div class="form-group">
-                                <label for="cover_buku"> Cover Buku </label>
+                                <label for="cover_buku">
+                                    Cover Buku
+                                    <small>
+                                        <span class="text-danger">
+                                            <i>(Extensi : JPG, PNG) | MAX : (2048)</i>
+                                        </span>
+                                    </small>
+                                </label>
                                 <input type="file" class="form-control" name="cover_buku" id="cover_buku">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="keterangan"> Keterangan </label>
-                        <textarea name="keterangan_buku" id="keterangan_buku" class="form-control" rows="5" placeholder="Masukkkan Keterangan Buku"></textarea>
+                        <textarea name="keterangan_buku" id="keterangan_buku" class="form-control" rows="5" placeholder="Masukkkan Keterangan Buku">{{ old("keterangan_buku") }}</textarea>
                     </div>
                 </div>
                 <div class="card-footer">

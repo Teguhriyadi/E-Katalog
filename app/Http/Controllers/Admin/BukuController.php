@@ -7,10 +7,20 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
-use App\Http\Requests\BukuFormRequest;
 
 class BukuController extends Controller
 {
+    public function message()
+    {
+        $message = [
+            "unique" => "Kolom :attribute Tidak Boleh Sama",
+            "required" => "Kolom :attribute Tidak Boleh Kosong",
+            "image" => "Kolom :attribute Harus Berbentuk Gambar",
+            "mimes" => "Kolom :attribute Tidak Mengandung Ekstensi Yang Dibutuhkan"
+        ];
+
+        return $message;
+    }
     //main page buku
     public function index()
     {
@@ -26,11 +36,23 @@ class BukuController extends Controller
     }
 
     //ngesave data  //buat save image upload //nentuin nama file ext  //nentuin tempat file move
-    public function store (BukuFormRequest $request){
+    public function store (Request $request)
+    {
+        $this->validate($request, [
+            "id_buku" => "required|unique:databuku",
+            "judul_buku" => "required",
+            "nama_penulis" => "required",
+            "tgl_terbit" => "required",
+            "halaman" => "required",
+            "ukuran" => "required",
+            "isbn" => "required",
+            "cover_buku" => "required|image|mimes:jpg,png,jpeg|max:2048",
+            "keterangan_buku" => "required",
+            "status_buku" => "required"
+        ], $this->message());
 
-        $validatedData = $request->validated();
         $buku = new Buku;
-        $buku->id_buku= $validatedData['id_buku'];
+        $buku->id_buku= $request['id_buku'];
 
         if($request->hasFile('cover_buku')){
             $file = $request->file('cover_buku');
@@ -40,14 +62,13 @@ class BukuController extends Controller
             $buku->cover_buku = $filename;
         }
 
-        //$buku->cover_buku       = $validatedData['cover_buku'];
-        $buku->judul_buku       = $validatedData['judul_buku'];
-        $buku->nama_penulis     = $validatedData['nama_penulis'];
-        $buku->tgl_terbit       = $validatedData['tgl_terbit'];
-        $buku->halaman          = $validatedData['halaman'];
-        $buku->ukuran           = $validatedData['ukuran'];
-        $buku->isbn             = $validatedData['isbn'];
-        $buku->keterangan_buku  = $validatedData['keterangan_buku'];
+        $buku->judul_buku       = $request['judul_buku'];
+        $buku->nama_penulis     = $request['nama_penulis'];
+        $buku->tgl_terbit       = $request['tgl_terbit'];
+        $buku->halaman          = $request['halaman'];
+        $buku->ukuran           = $request['ukuran'];
+        $buku->isbn             = $request['isbn'];
+        $buku->keterangan_buku  = $request['keterangan_buku'];
         $buku->slug             = Str::slug($buku->judul_buku);
         $buku->status_buku      = $request->status_buku == true ? '1' : '0';
 
@@ -69,12 +90,25 @@ class BukuController extends Controller
         //compact bwt passing smua data di 'buku' ke file view buku/edit
     }
 
-    public function update (BukuFormRequest $request, $buku){
-        //dd($buku);
+    public function update (Request $request, $buku)
+    {
+        $this->validate($request, [
+            "id_buku" => "required|unique:databuku",
+            "judul_buku" => "required",
+            "nama_penulis" => "required",
+            "tgl_terbit" => "required",
+            "halaman" => "required",
+            "ukuran" => "required",
+            "isbn" => "required",
+            "cover_buku" => "required|image|mimes:jpg,png,jpeg|max:2048",
+            "keterangan_buku" => "required",
+            "status_buku" => "required"
+        ], $this->message());
+
         $buku = Buku::findOrFail($buku);
-        $validatedData = $request->validated(); //ngevalidasi data inputan //data yg diinput kalo valid bakal diupdate
+
         //list isiannya
-        $buku->id_buku= $validatedData['id_buku'];
+        $buku->id_buku= $request['id_buku'];
         //buat save image upload
         if($request->hasFile('cover_buku')){
 
@@ -89,14 +123,14 @@ class BukuController extends Controller
             $file->move('uploads/buku/', $filename); //nentuin tempat file
             $buku->cover_buku = $filename;
         }
-        //$buku->cover_buku       = $validatedData['cover_buku'];
-        $buku->judul_buku       = $validatedData['judul_buku'];
-        $buku->nama_penulis     = $validatedData['nama_penulis'];
-        $buku->tgl_terbit       = $validatedData['tgl_terbit'];
-        $buku->halaman          = $validatedData['halaman'];
-        $buku->ukuran           = $validatedData['ukuran'];
-        $buku->isbn             = $validatedData['isbn'];
-        $buku->keterangan_buku  = $validatedData['keterangan_buku'];
+        //$buku->cover_buku       = $request['cover_buku'];
+        $buku->judul_buku       = $request['judul_buku'];
+        $buku->nama_penulis     = $request['nama_penulis'];
+        $buku->tgl_terbit       = $request['tgl_terbit'];
+        $buku->halaman          = $request['halaman'];
+        $buku->ukuran           = $request['ukuran'];
+        $buku->isbn             = $request['isbn'];
+        $buku->keterangan_buku  = $request['keterangan_buku'];
         $buku->slug             = Str::slug($buku->judul_buku);
         $buku->status_buku      = $request->status_buku == true ? '1' : '0';
 

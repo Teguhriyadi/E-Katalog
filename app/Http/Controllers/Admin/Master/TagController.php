@@ -9,6 +9,16 @@ use Illuminate\Support\Str;
 
 class TagController extends Controller
 {
+    public function message()
+    {
+        $message = [
+            "unique" => "Kolom :attribute Tidak Boleh Sama",
+            "required" => "Kolom :attribute Tidak Boleh Kosong"
+        ];
+
+        return $message;
+    }
+
     public function index()
     {
         $data["tags"] = Tag::orderBy("created_at", "DESC")->get();
@@ -18,6 +28,10 @@ class TagController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            "nama" => "required|unique:tag"
+        ], $this->message());
+
         Tag::create([
             "nama" => $request->nama,
             "slug" => Str::slug($request->nama)
@@ -28,6 +42,10 @@ class TagController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            "nama" => "required|unique:tag"
+        ], $this->message());
+
         Tag::where("id", $id)->update([
             "nama" => $request->nama,
             "slug" => Str::slug($request->nama)

@@ -100,6 +100,22 @@
                     <i class="fa fa-book"></i> Naskah Penulis
                 </a>
             </li>
+            <li class="nav-item {{ Request::segment(2) == "master" ? "active" : "" }} ">
+                <a class="nav-link {{ Request::segment(2) == "master" ? "" : "collapsed" }}" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-edit"></i>
+                    <span>Voting Pembaca</span>
+                </a>
+                <div id="collapseTwo" class="collapse {{ Request::segment(2) == "master" ? "show" : "" }} " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item {{ Request::segment(3) == "tag" ? "active" : "" }}" href="{{ url('/editor/voting/pembaca') }}">
+                            Data Voting
+                        </a>
+                        <a class="collapse-item {{ Request::segment(4) == "create" ? "active" : "" }} " href="{{ url('/editor/voting/pembaca/create') }}">
+                            Tambah Data Voting
+                        </a>
+                    </div>
+                </div>
+            </li>
             @endcan
 
             @can("penulis")

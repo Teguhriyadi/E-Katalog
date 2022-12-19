@@ -17,6 +17,17 @@
 @section('content')
 
 <div class="row">
+    @if (count($errors) > 0)
+    <div class="col-md-12">
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+    @endif
     <!-- Menampilkan Pesan -->
     <div class="col-md-12">
         @if(session('message'))
@@ -40,11 +51,11 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="id_katalog"> ID Katalog </label>
-                        <input type="text" class="form-control" name="id_katalog" id="id_katalog" placeholder="Masukkan ID Katalog">
+                        <input type="text" class="form-control" name="id_katalog" id="id_katalog" placeholder="Masukkan ID Katalog" value="{{ old('id_katalog') }}">
                     </div>
                     <div class="form-group">
                         <label for="nama_katalog"> Nama Katalog </label>
-                        <input type="text" class="form-control" name="nama_katalog" id="nama_katalog" placeholder="Masukkan Nama Katalog">
+                        <input type="text" class="form-control" name="nama_katalog" id="nama_katalog" placeholder="Masukkan Nama Katalog" value="{{ old('nama_katalog') }}">
                     </div>
                 </div>
                 <div class="card-footer">
@@ -127,7 +138,7 @@
                     </div>
                     <div class="form-group">
                         <label for="nama_katalog"> Nama Katalog </label>
-                        <input type="text" class="form-control" name="nama_katalog" id="nama_katalog" placeholder="Masukkan Nama Katalog" value="{{ $item->nama_katalog }}">
+                        <input type="text" class="form-control" name="nama_katalog" id="nama_katalog" placeholder="Masukkan Nama Katalog" value="{{ old('nama_katalog') ?? $item->nama_katalog }}">
                     </div>
                 </div>
                 <div class="modal-footer">
