@@ -50,7 +50,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center">No.</th>
-                                <th class="text-center">ID Buku</th>
+                                <th class="text-center">ID Paket</th>
                                 <th>Judul</th>
                                 <th>Penulis</th>
                                 <th class="text-center">Tanggal Terbit</th>
@@ -71,7 +71,7 @@
                                         {{ Carbon::createFromFormat("Y-m-d", $item->buku->tgl_terbit)->isoFormat('D MMMM Y') }}
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{ url('/admin/master/paket/'.$item->id_paket) }}" class="btn btn-warning btn-sm">
+                                        <a href="{{ url('/admin/master/paket/'.$item->id_paket.'/edit') }}" class="btn btn-warning btn-sm">
                                             <i class="fa fa-edit"></i> Edit
                                         </a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalHapus-{{ $item->id_paket }}">

@@ -95,16 +95,22 @@ class UserController extends Controller
 
     public function keranjang()
     {
+        $data["kontak"] = ProfilPerusahaan::first();
         $data["keranjang_detail"] = KeranjangDetail::get();
 
-        return view("user.layout.keranjang", $data);
+        if ($data["keranjang_detail"]->count() > 0) {
+            return view("user.layout.keranjang", $data);
+        } else {
+            return redirect("/");
+        }
+
     }
 
     public function hapus_keranjang($id)
     {
         KeranjangDetail::where("id", $id)->delete();
 
-        echo "<script>alert('Paket Terhapus');</script>";
+        echo "<script>alert('Sukses, Data Paket Berhasil Terhapus');</script>";
         echo "<script>window.location='/keranjang';</script>";
     }
 
@@ -131,7 +137,15 @@ class UserController extends Controller
             "total_pembelian" => 5000000,
             "alamat" => $request->alamat
         ]);
+    }
 
+    public function logout_user()
+    {
+        if (Auth::user()->role == "customer")
+        {
+            Auth::logout();
 
+            return redirect("/");
+        }
     }
 }

@@ -2,17 +2,29 @@
     use App\Models\PaketPreorder;
 @endphp
 
-@extends("user.layout.main")
+@extends("user.main")
 
 @section("title", "Keranjang")
 
 @section("content")
 
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('{{ url('/') }}/img/kategori1.jpg')">
+    <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+        <h2>Keranjang Belanja</h2>
+        <ol>
+            <li>
+                <a href="{{ url('/') }}">Home</a>
+            </li>
+            <li> Data Keranjang </li>
+        </ol>
+    </div>
+</div>
+
 <br>
-<div class="container">
+<div class="container pt-5">
     <h3>
         <i class="fa fa-shopping-cart"></i> Keranjang Belanja
-        <a href="{{ url('/') }}" class="btn btn-success pull-right">
+        <a href="{{ url('/') }}" class="btn btn-success float-end">
             <i class="fa fa-sign-in"></i> Lanjutkan Belanja
         </a>
     </h3>

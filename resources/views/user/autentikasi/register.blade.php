@@ -80,10 +80,38 @@
                                 <input type="email" id="email" name="email" class="form-control" />
                             </div>
 
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="notelp">
+                                            Nomer Telepon
+                                        </label>
+                                        <input type="text" id="notelp" name="notelp" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="gender">
+                                            Jenis Kelamin
+                                        </label>
+                                        <select name="gender" class="form-control" id="gender">
+                                            <option value="">- Piih -</option>
+                                            <option value="L">Laki - Laki</option>
+                                            <option value="P">Perempuan</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- Password input -->
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="password">Password</label>
                                 <input type="password" id="password" name="password" class="form-control" />
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="alamat"> Alamat </label>
+                                <textarea name="alamat" class="form-control" id="alamat"  rows="5"></textarea>
                             </div>
 
                             <button type="submit" class="btn btn-primary btn-block w-100 mb-4">

@@ -52,14 +52,14 @@
                             @csrf
                                 <!-- Email input -->
                                 <div class="form-outline mb-4">
-                                    <label class="form-label" for="emai">Email</label>
-                                    <input type="email" id="emai" class="form-control" />
+                                    <label class="form-label" for="email">Email</label>
+                                    <input type="email" id="email" name="email" class="form-control" />
                                 </div>
 
                                 <!-- Password input -->
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="password">Password</label>
-                                    <input type="password" id="password" class="form-control" />
+                                    <input type="password" name="password" id="password" class="form-control" />
                                 </div>
 
                                 <button type="submit" class="btn btn-primary btn-block w-100 mb-4">

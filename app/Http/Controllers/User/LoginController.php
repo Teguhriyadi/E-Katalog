@@ -23,7 +23,7 @@ class LoginController extends Controller
     public function post_login(Request $request)
     {
         $credentials = $request->validate([
-            "email" => "required|email",
+            "email" => "required",
             "password" => "required"
         ]);
 
@@ -55,18 +55,16 @@ class LoginController extends Controller
         return view("user.autentikasi.register", $data);
     }
 
-    public function post_register(RegisterFormRequest $request)
+    public function post_daftar(Request $request)
     {
-        $validatedData = $request->validated();
-
         $tanggal = date("YmdHis");
 
         $user = new User;
 
         $user->id_users = $tanggal;
-        $user->nama = $validatedData["nama"];
-        $user->email = $validatedData["email"];
-        $user->password = bcrypt($validatedData["password"]);
+        $user->nama = $request["nama_depan"] . " " . $request->nama_belakang;
+        $user->email = $request["email"];
+        $user->password = bcrypt($request["password"]);
         $user->role = "customer";
         $user->created_by = 0;
         $user->status = 1;
@@ -75,9 +73,9 @@ class LoginController extends Controller
 
         $customer = new Customer;
 
-        $customer->id_customer = date("YmdHis");
+        $customer->id_customer = "CS-" . date("YmdHis");
         $customer->user_id = $tanggal;
-        $customer->notelp = $request->notelp;
+        $customer->nomer_telepon = $request->notelp;
         $customer->alamat = $request->alamat;
         $customer->gender = $request->gender;
 

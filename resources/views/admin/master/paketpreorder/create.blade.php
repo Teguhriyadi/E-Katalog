@@ -112,13 +112,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="tanggal"> Tanggal </label>
-                                <input type="date" class="form-control" name="tanggal">
+                                <input type="datetime-local" class="form-control" name="tanggal">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="batas"> Batas </label>
-                                <input type="date" class="form-control" name="batas" id="batas">
+                                <input type="datetime-local" class="form-control" name="batas" id="batas">
                             </div>
                         </div>
                     </div>

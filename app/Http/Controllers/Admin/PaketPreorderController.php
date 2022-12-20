@@ -74,10 +74,11 @@ class PaketPreorderController extends Controller
     }
 
     public function edit (string $id_paket){
-        $katalogs = Katalog::all();
+        $katalog = Katalog::all();
         $listbuku = Buku::all();
         $paket = PaketPreorder::findOrFail($id_paket);
-        return view ('admin.paketpreorder.edit', compact('katalogs', 'listbuku', 'paket'));
+
+        return view ("admin.master.paketpreorder.edit", compact('katalog', 'listbuku', 'paket'));
     }
 
     public function update (PaketPreorderFormRequest $request, string $id_paket){
