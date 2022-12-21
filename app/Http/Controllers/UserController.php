@@ -42,6 +42,11 @@ class UserController extends Controller
 
     public function beli(Request $request, $id_paket)
     {
+        if (empty(Auth::user())) {
+            $session = session()->put("login", "Cetak");
+
+            return redirect("/login")->with($session);
+        }
         $paket = PaketPreorder::where("id_paket", $id_paket)->first();
 
         $cek_pesanan = Keranjang::where("user_id", Auth::user()->id_users)->where("status", 0)->first();
@@ -117,6 +122,7 @@ class UserController extends Controller
     public function checkout()
     {
         $data["keranjang_detail"] = KeranjangDetail::get();
+        $data["kontak"] = ProfilPerusahaan::first();
 
         return view("user.layout.checkout", $data);
     }

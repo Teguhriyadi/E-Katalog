@@ -60,6 +60,11 @@
                         Keranjang
                     </a>
                 </li>
+                <li>
+                    <a href="{{ url('/checkout') }}">
+                        Checkout
+                    </a>
+                </li>
                 <li class="dropdown">
                     <a href="#">
                         <span>Akun</span>

@@ -15,6 +15,8 @@ class LoginController extends Controller
 {
     public function login()
     {
+        $tampung = session()->get("login");
+
         $data["kontak"] = ProfilPerusahaan::first();
 
         return view("user.autentikasi.login", $data);
@@ -22,6 +24,8 @@ class LoginController extends Controller
 
     public function post_login(Request $request)
     {
+        $tampung = session()->get("login");
+
         $credentials = $request->validate([
             "email" => "required",
             "password" => "required"
@@ -39,6 +43,13 @@ class LoginController extends Controller
             } else {
                 if (Auth::attempt($credentials)) {
                     $request->session()->regenerate();
+
+                    if (!empty($tampung)) {
+
+                        session()->forget("login");
+
+                        return redirect("/keranjang");
+                    }
 
                     return redirect("/");
                 }
