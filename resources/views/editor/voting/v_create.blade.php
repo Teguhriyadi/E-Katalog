@@ -11,35 +11,25 @@
 @section('content')
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">
                     <i class="fa fa-plus"></i> Tambah Data
                 </h6>
             </div>
-            <div class="card-body">
-                <textarea name="keterangan" id="editor" cols="30" rows="10"></textarea>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">
-                    <i class="fa fa-plus"></i> Tambah Data
-                </h6>
-            </div>
-            <div class="card-body">
-                <div class="form-group">
-                    <label for="judul_voting"> Judul </label>
-                    <input type="text" class="form-control" name="judul_voting" id="judul_voting" placeholder="Masukkan Judul" value="{{ old("judul_voting") }}">
+            <form action="{{ url('/editor/voting/pembaca') }}" method="POST">
+                @csrf
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="url_voting"> URL Voting </label>
+                        <input type="url" class="form-control" name="url_voting" id="url_voting" placeholder="Masukkan Judul" value="{{ old("url_voting") }}">
+                    </div>
                 </div>
-                <div class="form-group"></div>
-            </div>
-            <div class="card-footer">
-                @include("admin.components.btn-tambah")
-            </div>
+                <div class="card-footer">
+                    @include("admin.components.btn-tambah")
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -244,7 +244,7 @@
                                                                 </span>
                                                             @elseif($diff == 0)
                                                                 <span class="badge badge-danger" style="background-color: red; color: white;">
-                                                                    Comming Soon
+                                                                    Segera Terbit
                                                                 </span>
                                                             @endif
                                                         </span>
@@ -257,12 +257,17 @@
 
                                                 <hr />
 
+                                                @if ($diff == 1)
                                                 <form action="{{ url('/beli/'.$data->id_paket) }}" method="POST">
                                                     @csrf
                                                     <button type="submit" class="btn btn-warning btn-sm" style="width: 100%">
                                                         <i class="fa fa-check"></i> Beli
                                                     </button>
                                                 </form>
+                                                @elseif($diff == 0)
+
+                                                @endif
+
                                             </div>
                                         </div>
                                     </div>
