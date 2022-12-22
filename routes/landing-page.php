@@ -17,6 +17,9 @@ Route::prefix("voting")->group(function() {
     });
 });
 
+Route::get("/nota/{transaksi_id}", [UserController::class, "nota"]);
+Route::get("/riwayat_belanja", [UserController::class, "riwayat_belanja"]);
+
 Route::get("/logout-user", [UserController::class, "logout_user"]);
 
 Route::prefix("blog")->group(function() {

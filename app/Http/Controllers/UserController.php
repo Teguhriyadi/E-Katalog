@@ -8,6 +8,8 @@ use App\Models\Master\Pesan;
 use App\Models\PaketPreorder;
 use App\Models\Pembelian;
 use App\Models\Pengaturan\ProfilPerusahaan;
+use App\Models\Transaksi\PembelianTransaksi;
+use App\Models\Transaksi\PembelianTransaksiPaket;
 use App\Models\Web\Artikel;
 use App\Models\Web\Carousel;
 use Illuminate\Http\Request;
@@ -137,12 +139,49 @@ class UserController extends Controller
 
     public function post_checkout(Request $request)
     {
-        Pembelian::create([
+        $keranjang = Keranjang::where("user_id", Auth::user()->id_users)->first();
+
+        $detail_keranjang = KeranjangDetail::where("keranjang_id", $keranjang->id)->get();
+
+        $transaksi_id = PembelianTransaksi::create([
+            "id_transaksi" => "TRN-" . date("YmdHis"),
             "customer_id" => Auth::user()->id_users,
-            "tanggal_pembelian" => date("Ymd"),
-            "total_pembelian" => 5000000,
-            "alamat" => $request->alamat
+            "tanggal_pembelian" => date("YmdHis"),
+            "total_pembelian" => $keranjang->jumlah_harga,
+            "alamat_pemesanan" => $request->alamat,
+            "status_pembelian" => "pending"
         ]);
+
+        $nomer = 1;
+        foreach ($detail_keranjang as $detail) {
+            PembelianTransaksiPaket::create([
+                "id_pembelian_paket" => "TRP-". date("YmdHis"). ++$nomer,
+                "id_transaksi" => $transaksi_id->id_transaksi,
+                "kode_paket" => $detail->id_paket,
+                "jumlah" => $detail->jumlah,
+                "nama_paket" => $detail->preoder->nama_paket,
+                "harga" => 100
+            ]);
+        }
+
+        return redirect("/nota/" . $transaksi_id->id_transaksi);
+    }
+
+    public function nota($transaksi_id)
+    {
+        $data["kontak"] = ProfilPerusahaan::first();
+        $data["transaksi"] = PembelianTransaksi::where("id_transaksi", $transaksi_id)->first();
+        $data["transaksi_paket"] = PembelianTransaksiPaket::where("id_transaksi", $transaksi_id)->get();
+
+        return view("user.layout.nota", $data);
+    }
+
+    public function riwayat_belanja()
+    {
+        $data["kontak"] = ProfilPerusahaan::first();
+        $data["transaksi"] = PembelianTransaksi::where("customer_id", Auth::user()->id_users)->get();
+
+        return view("user.layout.riwayat_belanja", $data);
     }
 
     public function logout_user()

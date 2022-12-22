@@ -39,12 +39,6 @@
                                         Login
                                     </button>
                                 </div>
-                                <div class="text-center mt-4 font-weight-light">
-                                    Daftar Jadi Penulis?
-                                    <a href="{{ url('/auth/register') }}" class="text-primary">
-                                        Klik Disini
-                                    </a>
-                                  </div>
                             </form>
                         </div>
                     </div>

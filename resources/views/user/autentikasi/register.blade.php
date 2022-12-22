@@ -59,7 +59,7 @@
                                         <label class="form-label" for="nama_depan">
                                             Nama Depan
                                         </label>
-                                        <input type="text" id="nama_depan" class="form-control" required>
+                                        <input type="text" name="nama_depan" id="nama_depan" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-4">
@@ -67,7 +67,7 @@
                                         <label class="form-label" for="nama_belakang">
                                             Nama Belakang
                                         </label>
-                                        <input type="text" id="nama_belakang" class="form-control" />
+                                        <input type="text" name="nama_belakang" id="nama_belakang" class="form-control" />
                                     </div>
                                 </div>
                             </div>

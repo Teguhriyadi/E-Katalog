@@ -134,6 +134,12 @@
                     <span>Upload Naskah</span>
                 </a>
             </li>
+            <li class="nav-item {{ Request::is("penulis/master/naskah/create") ? 'active' : '' }} ">
+                <a href="{{ url('/penulis/master/naskah/create') }}" class="nav-link">
+                    <i class="fas fa-fw fa-upload"></i>
+                    <span>Voting Penulis</span>
+                </a>
+            </li>
             @endcan
 
             <!-- Divider -->

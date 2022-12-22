@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('paket_preorder', function (Blueprint $table) {
-            $table->string('id_paket', 50)->primary();
+            $table->string('id_paket', 70)->primary();
             $table->string('idkatalog', 6)->nullable();
             $table->string('idbuku', 6)->nullable();
             $table->string('cover_paket')->nullable();
